@@ -1,9 +1,9 @@
 <template>
-<div>
-  <h1>test</h1>
+<div id="mars">
+  <h1>Mars Rover Photos</h1>
+  <p>Image data gathered by NASA's Curiosity, Opportunity, and Spirit rovers on Mars</p>
 <mars-photo-item v-for="(photo, index) in marsPhotos" :key="index" :photo="photo"/>
 
-{{marsPhotos.latest_photos}}
 
 </div>
 
@@ -45,5 +45,9 @@ export default {
 </script>
 
 <style>
+#mars {
+  text-align: center;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
 
 </style>
