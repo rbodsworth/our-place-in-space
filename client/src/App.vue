@@ -1,7 +1,6 @@
 <template>
   <div>
-    <apod/>
-
+    <apod></apod>
   </div>
 </template>
 
@@ -11,7 +10,7 @@ import Apod from './components/Apod.vue';
 
 export default {
   name: 'app',
-  component: {
+  components: {
     'apod' : Apod
   }
 }
