@@ -20,8 +20,6 @@ Understanding our place in the universe
 
 When we look from space we only see the planet earth and beyond that we see billions of stars and planets. 
 
-Competing as individuals and nation states drives self interest and the destruction of our shared biosphere.
-
 This project aims explore questions of how an individual relates to the global.
 
 ## MVP
