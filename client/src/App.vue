@@ -2,16 +2,19 @@
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
     <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <epic-image/>
   </div>
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
+import EPIC from './components/EPIC'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    HelloWorld,
+    "epic-image": EPIC
   }
 }
 </script>
