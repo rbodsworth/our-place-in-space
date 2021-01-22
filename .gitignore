@@ -26,3 +26,6 @@ client/*.ntvs*
 client/*.njsproj
 client/*.sln
 client/*.sw?
+
+# Secrets
+client/src/secrets/
