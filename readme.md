@@ -18,7 +18,7 @@ As the MVP doesn't require server this set up on this has not been completed
 ### Life in perspective
 Understanding our place in the universe
 
-When we look from space we only see the planet earth and beyond that we see billions of stars and planets. 
+When we look to space we see billions of stars and planets. 
 
 This project aims explore questions of how an individual relates to the global.
 
@@ -32,3 +32,8 @@ Integrate further NASA api
 * [EPIC](https://epic.gsfc.nasa.gov/)
 * [Earth](https://api.nasa.gov/)
 
+
+## Mini sprint
+### For monday AM
+* Import images from chosen API to component
+* Describe the data structure of API
