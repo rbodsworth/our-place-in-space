@@ -1,8 +1,7 @@
 <template>
     <div>
         <h2>EPIC</h2><br>
-        <span>with this {{this.epicImage}}</span><br>
-        <span>without {{epicImage}}</span>
+        <span>Earth</span><br>
         <img :src="workingUrl"/>
     </div>
 </template>
