@@ -29,8 +29,8 @@ Display an image from the NASA Astronomy Picture of the day api.
 
 ### Extension
 Integrate further NASA api 
-– [Mars weather](https://mars.nasa.gov/insight/weather/)
-– [Mars rover](https://github.com/chrisccerami/mars-photo-api)
-– [EPIC](https://epic.gsfc.nasa.gov/)
-– [Earth](https://api.nasa.gov/)
+* [Mars weather](https://mars.nasa.gov/insight/weather/)
+* [Mars rover](https://github.com/chrisccerami/mars-photo-api)
+* [EPIC](https://epic.gsfc.nasa.gov/)
+* [Earth](https://api.nasa.gov/)
 
