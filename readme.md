@@ -23,14 +23,21 @@ When we look to space we see billions of stars and planets.
 This project aims explore questions of how an individual relates to the global.
 
 ## MVP
-Display an image from the [NASA Astronomy Picture APOD](https://github.com/nasa/apod-api) of the day api.
+Display an image from 3 different apis, at the top level component. 
+![MVP and extension diagram](./imgs/mvp-diagram.jpg)
 
-### Extension
-Integrate further NASA api 
+
+### APIs
+
+* [NASA Astronomy Picture APOD](https://github.com/nasa/apod-api) of the day api.
 * [Mars weather](https://mars.nasa.gov/insight/weather/)
 * [Mars rover](https://github.com/chrisccerami/mars-photo-api)
 * [EPIC](https://epic.gsfc.nasa.gov/)
 * [Earth](https://api.nasa.gov/)
+
+
+### Extension
+Make data from each api the same format so that it can be used on a shared component sub component "image-element".
 
 
 ## Mini sprint
