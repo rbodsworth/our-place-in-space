@@ -7,18 +7,28 @@
 </template>
 
 <script>
+import key from '../secrets/rAPI.json';
+
 export default {
     name: 'epic-image',
     data() {
         return {
             epicImage: undefined,
-            url: "https://epic.gsfc.nasa.gov/archive/natural/2015/10/31/png/epic_1b_20151031074844.png"
+            url: "https://api.nasa.gov/EPIC/archive/natural/2019/05/30/jpg/epic_1b_20190530011359.jpg?api_key=",
+            workingUrl: ""
         }
     },
     methods: {
+        generateFullUrl: function () {
+            return this.workingUrl =  this.url + key.nasa;
+        },
+
         getEpicImage: function() {
-            fetch(this.url)
+            this.generateFullUrl()
+            fetch(this.workingUrl)
+            // .then(console.log(res))
             .then(res => this.epicImage = res)
+            .then(console.log(this.epicImage));
         }
     },
     mounted() {
