@@ -23,7 +23,7 @@ When we look from space we only see the planet earth and beyond that we see bill
 This project aims explore questions of how an individual relates to the global.
 
 ## MVP
-Display an image from the NASA Astronomy Picture of the day api.
+Display an image from the [NASA Astronomy Picture APOD](https://github.com/nasa/apod-api) of the day api.
 
 ### Extension
 Integrate further NASA api 
