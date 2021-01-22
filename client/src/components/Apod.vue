@@ -31,7 +31,7 @@ export default {
     
     methods: {
         getApod: function(){
-            fetch('https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY')
+            fetch(`https://api.nasa.gov/planetary/apod?api_key=${APIkey}`)
             .then(res => res.json())
             .then(data => this.picOfTheDay = data)
             },
