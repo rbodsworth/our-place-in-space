@@ -1,6 +1,8 @@
 <template>
   <div id='apod'>
     <date-form/>
+      <h3> Date: {{picOfTheDay.date}}</h3>
+      
       <h2>Picture of the day</h2>
       <h3> {{picOfTheDay.title}} </h3>
       <img :src="picOfTheDay.url" width='500'>
@@ -9,8 +11,6 @@
       <h2>Explanation</h2>
       <p> {{picOfTheDay.explanation}}</p>
 
-      <h2>Date</h2>
-      <p> {{picOfTheDay.date}}</p>
   </div>
 </template>
 

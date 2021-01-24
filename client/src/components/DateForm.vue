@@ -3,9 +3,9 @@
         <p>This is where the date form will appear</p>
         <form>
             <label for="image_date">Select a date</label>
-            <input type="date" id="image_date" name="image_date">
+            <input type="date" id="image_date" name="image_date" v-model="date_selected">
             <input type="submit">
-        </form>
+        </form> 
         <!-- on submission of form, call function handleDateSubmit()
         which should make a new Api call with the date value as a parameter.
         This should result in an image that corresonds to that date -->
