@@ -1,7 +1,7 @@
 <template>
     <div>
         <p>This is where the date form will appear</p>
-        <form>
+        <form v-on:submit.prevent="handleDateSubmit">
             <label for="image_date">Select a date</label>
             <input type="date" id="image_date" name="image_date" v-model="date_selected">
             <input type="submit">
@@ -23,6 +23,8 @@ export default {
     },
     methods: {
         handleDateSubmit: function(){
+
+            console.log("This is working")
             // get date inputted/selected by user in form 
             // update this.date_selected?
           // fetch data from api using selected date as a parameter
