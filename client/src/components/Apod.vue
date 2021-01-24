@@ -25,8 +25,7 @@ export default {
     },
     data () {
       return {
-        picOfTheDay: undefined,
-        selectedDate: undefined
+        picOfTheDay: undefined
       }
     },
 
@@ -39,15 +38,7 @@ export default {
             fetch(`https://api.nasa.gov/planetary/apod?api_key=${APIkey}`)
             .then(res => res.json())
             .then(data => this.picOfTheDay = data)
-            },
-        
-        getSelectedApod: function(){
-          //take selected date off eventbus and update this.selectedDate
-          // fetch data from api using selected date as a parameter
-          // new request should return a json response that includes new image and assoc details
-          
-        }
-  
+            } 
     }
 
 }
