@@ -25,7 +25,8 @@ export default {
     },
     data () {
       return {
-        picOfTheDay: undefined
+        picOfTheDay: undefined,
+        selectedDate: undefined
       }
     },
 
@@ -39,6 +40,14 @@ export default {
             .then(res => res.json())
             .then(data => this.picOfTheDay = data)
             },
+        
+        getSelectedApod: function(){
+          //take selected date off eventbus and update this.selectedDate
+          // fetch data from api using selected date as a parameter
+          // new request should return a json response that includes new image and assoc details
+          
+        }
+  
     }
 
 }
