@@ -10,7 +10,9 @@
         which should make a new Api call with the date value as a parameter.
         This should result in an image that corresonds to that date -->
         <h3 v-if="picOfTheDate"> {{picOfTheDate.title}} </h3>
-        <!-- <img v-if="picOfTheDate" :src="picOfTheDate.url" width='500'> -->
+        <h3 v-if="picOfTheDate"> {{picOfTheDate.explanation}} </h3>
+        <h3 v-if="picOfTheDate"> {{picOfTheDate.date}} </h3>
+        <img v-if="picOfTheDate" :src="picOfTheDate.url" width='500'>
     </div>
   
 </template>
