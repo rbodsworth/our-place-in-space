@@ -18,12 +18,14 @@ import { APIkey } from '../assets/APOD-API-Key';
 
 export default {
     name: 'apod',
+    components: {
+      'date-form': DateForm
+    },
     data () {
       return {
         picOfTheDay: undefined
       }
-    }
-    ,
+    },
 
     mounted () {
       this.getApod()
