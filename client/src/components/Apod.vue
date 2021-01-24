@@ -1,5 +1,6 @@
 <template>
   <div id='apod'>
+    <date-form/>
       <h2>Picture of the day</h2>
       <h3> {{picOfTheDay.title}} </h3>
       <img :src="picOfTheDay.url" width='500'>
@@ -15,6 +16,7 @@
 
 <script>
 import { APIkey } from '../assets/APOD-API-Key';
+import DateForm from './DateForm.vue';
 
 export default {
     name: 'apod',
