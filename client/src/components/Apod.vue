@@ -17,6 +17,7 @@
 <script>
 import { APIkey } from '../assets/APOD-API-Key';
 import DateForm from './DateForm.vue';
+import { eventBus } from '../main.js';
 
 export default {
     name: 'apod',
@@ -38,8 +39,18 @@ export default {
             fetch(`https://api.nasa.gov/planetary/apod?api_key=${APIkey}`)
             .then(res => res.json())
             .then(data => this.picOfTheDay = data)
-            } 
+            }
+    },
+    computed: {
+
+      updatedPic() {eventBus.$on("selected-date", (picOfTheDate) =>{
+        this.picOfTheDay = picOfTheDate
+      })}
     }
+
+    // eventBus.$on('munro-selected', (munro) => {
+    //   this.selectedMunro = munro
+    // })
 
 }
 </script>
