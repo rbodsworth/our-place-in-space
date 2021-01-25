@@ -2,7 +2,7 @@
     <div>
         <label for="EPICDates">Choose a date</label>
         <select name="EPICDates">
-            <epic-dropdown-item v-for="(item, index) in dates" :date="date"/>
+            <epic-dropdown-item v-for="(date, index) in dates" :date="date"/>
         </select>
     </div>
   
