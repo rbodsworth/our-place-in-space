@@ -18,7 +18,6 @@ export default {
         return{
             date_selected_form: null,
             picOfTheDate: null
-            
         }
     },
 
