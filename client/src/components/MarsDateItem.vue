@@ -1,8 +1,10 @@
 <template>
-<div>
-  <input id="date" type="date">
-  <button id="button" href="">Submit</button>
-  </div>
+    <div>
+        <form v-on:submit.prevent="handleDateSubmit">
+            <label for="image_date">Select a date</label>
+            <input type="date" id="image_date" name="image_date" v-model="date_selected">
+            <input type="submit">
+        </form> 
 </template>
 
 <script>
@@ -13,7 +15,7 @@ export default {
     name: 'mars-date-item',
     data () {
         return {
-            selected_date: null 
+            selectedDate: null 
 
         }
     },
@@ -22,7 +24,7 @@ export default {
       getPhotos: function(){
       fetch(`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=${date}&api_key=${APIkey}`)
       .then( res => res.json())
-      .then(data => )
+      .then(data => this.selectedDate = data)
 
 }}}
 
