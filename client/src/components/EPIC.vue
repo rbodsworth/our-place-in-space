@@ -75,7 +75,8 @@ export default {
         },
 
         makeEpicArchiveEndPoint: function() {
-            return this.epicArchiveEndPoint  = `https://api.nasa.gov/EPIC/archive/natural/${this.selectedYear}/${this.selectedMonth}/${this.selectedDay}/?api_key=${key.nasa}`;
+            return this.epicArchiveEndPoint  = `https://epic.gsfc.nasa.gov/api/enhanced/date/${this.selectedDate}?api_key=${key.nasa}`;
+            // return this.epicArchiveEndPoint  = `https://api.nasa.gov/EPIC/archive/natural/${this.selectedYear}/${this.selectedMonth}/${this.selectedDay}/?api_key=${key.nasa}`;
         }
 
 
