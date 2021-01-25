@@ -3,7 +3,7 @@
   <h1>Mars Rover Photos</h1>
   <p>Image data gathered by NASA's Curiosity, Opportunity, and Spirit rovers on Mars</p>
 <mars-photo-item v-for="(photo, index) in marsPhotos" :key="index" :photo="photo"/>
-
+  
 
 </div>
 
@@ -39,6 +39,7 @@ export default {
       .then( res => res.json())
       .then (data => this.marsPhotos = data.latest_photos)
     },
+  
   }
 
 }
