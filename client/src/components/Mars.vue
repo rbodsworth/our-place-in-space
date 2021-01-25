@@ -15,17 +15,22 @@
 
 import { APIkey } from '@/assets/MARS_API_KEY'
 import MarsPhotoItem from './MarsPhotoItem.vue'
+import MarsDateItem from './MarsDateItem.vue'
+import { eventBus } from '../main.js';
+
 
 export default {
   components: { 
-    'mars-photo-item': MarsPhotoItem
+    'mars-photo-item': MarsPhotoItem, 
+    'mars-date-item': MarsDateItem
   
   },
 
   name: 'mars', 
   data() {
     return {
-    marsPhotos: []
+    marsPhotos: [],
+    datePic: undefined
     }
   },
 
@@ -39,6 +44,11 @@ export default {
       .then( res => res.json())
       .then (data => this.marsPhotos = data.latest_photos)
     },
+
+  computed: {
+    newPic() {eventBus.$on("selected-date", (datePic) =>{
+        this.datePic = datePic
+  })}}
   
   }
 

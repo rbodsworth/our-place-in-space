@@ -23,7 +23,7 @@ export default {
     },
 
     methods: {
-      getPhotos: function(){
+      handleDateSubmit: function(){
       fetch(`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=${this.selected_date}&api_key=${APIkey}`)
       .then( res => res.json())
       .then(data => this.datePic = data)
