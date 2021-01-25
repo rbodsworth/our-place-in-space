@@ -19,7 +19,9 @@ export default {
         return {
             epicImage: undefined,
             testUrl: "https://api.nasa.gov/EPIC/archive/natural/2019/05/30/jpg/epic_1b_20190530011359.jpg?api_key=",
-            epicArchiveEndPoint: "https://api.nasa.gov/EPIC/archive/natural/?api_key=",
+            // epicArchiveEndPoint: `https://api.nasa.gov/EPIC/archive/natural/?api_key=`,
+            allEpicDatesEndPoint: "https://epic.gsfc.nasa.gov/api/natural/all",
+            allEpicDates: {},
             epicMostRecentEndPoint: "https://api.nasa.gov/EPIC/api/natural/?api_key=",
             workingUrl: "",
             inputDate:""
@@ -47,22 +49,25 @@ export default {
             console.log(this.workingUrl);
         },
 
-        getEpicArchivebyDate: function() {
-            this.addApiKeyToEndPoint(this.epicArchiveEndPoint);
-            console.log(this.workingUrl);
+        // getEpicArchivebyDate: function() {
+        //     this.addApiKeyToEndPoint(this.epicArchiveEndPoint);
+        //     console.log(this.workingUrl);
 
             // inputDate = '2018-08-12'
             // fetch(this.workingUrl)
-        },
+        // },
 
         // query json 
-        findFirstIndexFromPartVal: (arr, key, query) => { 
-            return arr.findIndex(el => el[(key)].indexOf(query) !== -1 )
-            }
+        // findFirstIndexFromPartVal: (arr, key, query) => { 
+            // return arr.findIndex(el => el[(key)].indexOf(query) !== -1 )
+            // }
     },
-    // mounted() {
+    mounted() {
         // this.getEpicImage()
-    // }
+        fetch(this.allEpicDatesEndPoint)
+        .then(res => res.json())
+        .then(data => this.allEpicDates = data)
+    }
 
 }
 </script>
