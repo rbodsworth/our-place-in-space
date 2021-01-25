@@ -5,6 +5,8 @@
             <input type="date" id="image_date" name="image_date" v-model="selected_date">
             <input type="submit">
         </form> 
+
+            </div>
 </template>
 
 <script>
