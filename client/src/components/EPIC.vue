@@ -3,6 +3,7 @@
         <h2>EPIC</h2><br>
         <span>with this {{this.epicImage}}</span><br>
         <span>without {{epicImage}}</span>
+        <epic-dates-dropdown :dates="allEpicDates"/>
         <button v-on:click="getEpicArchivebyDate()">Archive</button>
         <button v-on:click="getEpicRecent()">Today</button>
         <img :src="workingUrl"/>
@@ -11,17 +12,21 @@
 
 <script>
 import key from '../secrets/rAPI.json';
+import EpicDatesDropdown from './EpicDatesDropdown';
 
 
 export default {
     name: 'epic-image',
+    components : {
+        "epic-dates-dropdown": EpicDatesDropdown
+    },
     data() {
         return {
             epicImage: undefined,
             testUrl: "https://api.nasa.gov/EPIC/archive/natural/2019/05/30/jpg/epic_1b_20190530011359.jpg?api_key=",
             // epicArchiveEndPoint: `https://api.nasa.gov/EPIC/archive/natural/?api_key=`,
             allEpicDatesEndPoint: "https://epic.gsfc.nasa.gov/api/natural/all",
-            allEpicDates: {},
+            allEpicDates: [],
             epicMostRecentEndPoint: "https://api.nasa.gov/EPIC/api/natural/?api_key=",
             workingUrl: "",
             inputDate:""
