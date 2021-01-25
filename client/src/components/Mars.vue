@@ -31,7 +31,7 @@ export default {
   data() {
     return {
     marsPhotos: [],
-    datePic: undefined
+    datePic: []
     }
   },
 
@@ -44,6 +44,11 @@ export default {
       fetch(`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/latest_photos?api_key=${APIkey}`)
       .then( res => res.json())
       .then (data => this.marsPhotos = data.latest_photos)
+
+       eventBus.$on('selected-date', (datePic) => {
+      this.datePic = datePic
+      console.log(datePic)
+    })
     },
 
   // computed: {

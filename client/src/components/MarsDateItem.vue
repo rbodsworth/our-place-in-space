@@ -5,7 +5,6 @@
             <input type="date" id="image_date" name="image_date" v-model="selected_date">
             <input type="submit">
         </form> 
-
             </div>
 </template>
 
@@ -18,8 +17,8 @@ export default {
     name: 'mars-date-item',
     data () {
         return {
-            selected_date: undefined,
-            datePic: undefined
+            selected_date: "",
+            datePic: []
 
         }
     },
@@ -31,6 +30,7 @@ export default {
       .then(data => this.datePic = data)
 
     eventBus.$emit("selected-date", this.datePic)
+    console.log("emit", this.datePic)
 
 
 }}}
