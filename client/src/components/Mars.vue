@@ -1,10 +1,10 @@
 <template>
 <div id="mars">
+   <mars-date-item ></mars-date-item>
   <h1>Mars Rover Photos</h1>
   <p>Image data gathered by NASA's Curiosity, Opportunity, and Spirit rovers on Mars</p>
-  <mars-date-item ></mars-date-item>
+  <h3>{{datePic.photos[1].id}}</h3>
 <mars-photo-item v-for="(photo, index) in marsPhotos" :key="index" :photo="photo"/>
-  
 
 </div>
 
@@ -37,6 +37,10 @@ export default {
 
   mounted () {
     this.getPhotos()
+
+     eventBus.$on('selected-date', (datePic) => {
+      this.datePic = datePic
+    })
   },
 
   methods: {
@@ -45,10 +49,7 @@ export default {
       .then( res => res.json())
       .then (data => this.marsPhotos = data.latest_photos)
 
-       eventBus.$on('selected-date', (datePic) => {
-      this.datePic = datePic
-      console.log(datePic)
-    })
+      
     },
 
 
