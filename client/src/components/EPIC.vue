@@ -6,6 +6,7 @@
         <epic-dates-dropdown :dates="allEpicDates"/>
         <button v-on:click="getEpicArchivebyDate()">Archive</button>
         <button v-on:click="getEpicRecent()">Today</button>
+        <button v-on:click="makeEpicArchiveEndPoint()">Make end point</button>
         <img :src="liveEndPoint"/>
     </div>
 </template>
@@ -74,10 +75,7 @@ export default {
         },
 
         makeEpicArchiveEndPoint: function() {
-            let endpoint = `https://api.nasa.gov/EPIC/archive/natural/${selectedYear}/${selectedMonth}/${selectedDay}/?api_key=`
-            this.live
-            
-            this.addApiKeyToEndPoint(this.epicArchiveEndPoint);
+            return this.epicArchiveEndPoint  = `https://api.nasa.gov/EPIC/archive/natural/${this.selectedYear}/${this.selectedMonth}/${this.selectedDay}/?api_key=${key.nasa}`;
         }
 
 
