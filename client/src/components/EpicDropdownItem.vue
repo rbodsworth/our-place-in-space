@@ -1,6 +1,5 @@
 <template lang="html">
-    <option value="date">{{ date }}</option>
-  
+    <option value="date">{{ date.date }}</option>
 </template>
 
 <script>

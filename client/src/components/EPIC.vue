@@ -13,6 +13,7 @@
 <script>
 import key from '../secrets/rAPI.json';
 import EpicDatesDropdown from './EpicDatesDropdown';
+import { eventBus } from '../main.js';
 
 
 export default {
@@ -27,6 +28,7 @@ export default {
             // epicArchiveEndPoint: `https://api.nasa.gov/EPIC/archive/natural/?api_key=`,
             allEpicDatesEndPoint: "https://epic.gsfc.nasa.gov/api/natural/all",
             allEpicDates: [],
+            selectedDate: "",
             epicMostRecentEndPoint: "https://api.nasa.gov/EPIC/api/natural/?api_key=",
             workingUrl: "",
             inputDate:""
@@ -72,6 +74,11 @@ export default {
         fetch(this.allEpicDatesEndPoint)
         .then(res => res.json())
         .then(data => this.allEpicDates = data)
+
+        eventBus.$on("date-selected", (selectedDate) => {
+            console.log(selectedDate);
+            // this.selectedDate = date;
+        })
     }
 
 }
