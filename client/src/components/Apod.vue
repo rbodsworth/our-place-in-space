@@ -16,8 +16,8 @@
 
 <script>
 import { APIkey } from '../assets/APOD-API-Key';
-import DateForm from './DateForm.vue';
 import { eventBus } from '../main.js';
+import DateForm from './DateForm.vue';
 
 export default {
     name: 'apod',
@@ -32,6 +32,9 @@ export default {
 
     mounted () {
       this.getApod()
+
+      eventBus.$on("date-selected", (payload) => this.picOfTheDay = payload)
+
     },
     
     methods: {
@@ -39,20 +42,32 @@ export default {
             fetch(`https://api.nasa.gov/planetary/apod?api_key=${APIkey}`)
             .then(res => res.json())
             .then(data => this.picOfTheDay = data)
-            }
-    },
-    computed: {
-
-      updatedPic() {eventBus.$on("selected-date", (picOfTheDate) =>{
-        this.picOfTheDay = picOfTheDate
-      })}
+            
+            },
+      
     }
-
-    // eventBus.$on('munro-selected', (munro) => {
-    //   this.selectedMunro = munro
-    // })
-
 }
+        
+
+
+    // EVERYTHING BELOW IS OUTSIDE OF OUR EXPORT DEFAULT()
+    // computed: {
+      
+      // updateDate: function(){
+      //   eventBus.$on("date-selected",  (date_selected_form) => {
+      //     return payload = this.dateSelected;
+      //   }) 
+      // }
+    // }
+
+    // updatedPic() {
+      //   eventBus.$on("selected-date", (picOfTheDate) => this.picOfTheDay = picOfTheDate)}
+        
+      // getUpdatedPic: function(`https://api.nasa.gov/planetary/apod?api_key=${APIkey}&date=${this.dateSelected}`)
+      //       .then ( res => res.json())
+      //       .then (data => this.picOfTheDate = data)
+
+// }
 </script>
 
 <style>
