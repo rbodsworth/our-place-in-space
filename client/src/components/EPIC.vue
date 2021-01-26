@@ -5,7 +5,8 @@
         <epic-dates-dropdown :dates="allEpicDates"/>
         <button v-on:click="getArchiveImageNames()">02 GetImageNames</button>
         <button v-on:click=" makeEpicArchiveImageUrls()">03 Make Urls</button>
-        <img :src="liveEndPoint"/>
+        <!-- <img v-if="archiveImageUrls" :src="archiveImageUrls[0]"/> -->
+        <!-- <img v-else :src="liveEndPoint" /> -->
     </div>
 </template>
 
@@ -27,7 +28,7 @@ export default {
             
             allEpicDatesEndPoint: "https://epic.gsfc.nasa.gov/api/natural/all",
             allEpicDates: [],
-            selectedDate: "",
+            selectedDate: null,
 
             selectedYear: "",
             selectedMonth: "",
@@ -38,10 +39,10 @@ export default {
             epicMostRecentEndPoint: "https://api.nasa.gov/EPIC/api/natural/?api_key=",
             archiveEndPointData: [],
             archiveImageNames: [], 
-            archiveImageUrls: [],
+            archiveImageUrls: null,
             
             
-            liveEndPoint: "",
+            liveEndPoint: "https://api.nasa.gov/EPIC/archive/natural/2019/05/30/jpg/epic_1b_20190530011359.jpg?api_key=II98yPghSJkmCYT5tLCetb1xvGuLEZ4yieHiJDbc",
         }
     },
     methods: {
@@ -77,7 +78,7 @@ export default {
 
         getArchiveImageNames: function() {
             this.archiveEndPointData.forEach( el => console.log('image name', el.image) );
-            this.archiveEndPointData.forEach( el => this.archiveImageNames.push(el.image) );
+            return this.archiveImageNames = this.archiveEndPointData.map( obj => obj.image );
         },
 
         makeEpicArchiveImageUrls: function() {
@@ -99,9 +100,9 @@ export default {
 
             fetch(this.makeEpicArchiveEndPoint())
             .then(res => res.json())
-            .then(data => this.archiveEndPointData = data)
-            .then(this.getArchiveImageNames())
-            .then(this.makeEpicArchiveImageUrls());
+            .then(data => this.archiveEndPointData = data);
+            // .then(this.getArchiveImageNames())
+            // .then(this.makeEpicArchiveImageUrls());
 
         });
     }
