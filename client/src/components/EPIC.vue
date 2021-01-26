@@ -3,8 +3,6 @@
         <h2>EPIC</h2><br>
         <span> 01</span>
         <epic-dates-dropdown :dates="allEpicDates"/>
-        <button v-on:click="getArchiveImageNames()">02 GetImageNames</button>
-        <button v-on:click=" makeEpicArchiveImageUrls()">03 Make Urls</button>
         <!-- <img v-if="archiveImageUrls" :src="archiveImageUrls[0]"/> -->
         <!-- <img v-else :src="liveEndPoint" /> -->
     </div>
@@ -77,17 +75,11 @@ export default {
         },
 
         getArchiveImageNames: function(data) {
-            // this.archiveEndPointData.forEach( el => console.log('image name', el.image) );
-            // return this.archiveEndPointData.map( obj => obj.image );
-            // this.archiveImageNames = this.archiveEndPointData.map( obj => obj.image );
             return data.map( obj => obj.image );
-            // console.log(this.archiveImageNames)
         },
 
         makeEpicArchiveImageUrls: function() {
-            // this.archiveImageUrls = this.archiveImageNames.map( image => `https://api.nasa.gov/EPIC/archive/natural/${this.selectedYear}/${this.selectedMonth}/${this.selectedDay}/jpg/${image}.jpg?api_key=${key.nasa}` );
             return this.archiveImageNames.map( image => `https://api.nasa.gov/EPIC/archive/natural/${this.selectedYear}/${this.selectedMonth}/${this.selectedDay}/jpg/${image}.jpg?api_key=${key.nasa}` );
-            console.log(this.archiveImageUrls);
         }
 
     },
