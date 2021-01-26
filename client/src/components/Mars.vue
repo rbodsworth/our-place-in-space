@@ -1,12 +1,11 @@
 <template>
 <div id="mars">
-   <!-- <mars-date-item ></mars-date-item> -->
-   <!-- <mars-date-item v-for="(photos, index) in datePic" :key="index" :photos="photos"  /> -->
-
   <h1>Mars Rover Photos</h1>
-  <p>Image data gathered by NASA's Curiosity, Opportunity, and Spirit rovers on Mars</p>
+  <h3>Image data gathered by NASA's Curiosity, Opportunity, and Spirit rovers on Mars</h3>
+  <p>Search images by a specific date</p>
 <mars-date-item ></mars-date-item>
-<mars-photo-item v-for="(photo, index) in marsPhotos" :key="index" :photo="photo"/>
+<!-- <mars-photo-item :photo="marsPhotos[0].img_src"> </mars-photo-item> -->
+<img :src="marsPhotos[0].img_src" width="500">
 
 </div>
 
@@ -33,27 +32,26 @@ export default {
   data() {
     return {
     marsPhotos: [],
-    datePic: []
+    // datePic: null
     }
   },
 
   mounted () {
     this.getPhotos()
+    
+    eventBus.$on('date-selected', (payload) => this.marsPhotos = payload)
 
-     eventBus.$on('selected-date', (datePic) => {
-      this.datePic = datePic
-      
-    })
   },
 
   methods: {
     getPhotos: function(){
-      fetch(`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/latest_photos?api_key=${APIkey}&page=0`)
+      fetch(`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/latest_photos?api_key=${APIkey}&page=1`)
       .then( res => res.json())
       .then (data => this.marsPhotos = data.latest_photos)
 
       
     },
+    
 
 
   

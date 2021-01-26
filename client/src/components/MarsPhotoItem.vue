@@ -1,26 +1,36 @@
 <template>
 
  <div id='apod'>
-      <h3> {{photo.name}} </h3>
-      <img :src="photo.img_src" width='400' >
+     <!-- <h2>Latest Photo</h2> -->
+      <!-- <img :src="photo.img_src" width='400' >
       <p id="p1"> Rover name: {{photo.rover.name}} </p>
       <p id="p2"> Sol: {{photo.sol}}</p>
-      <p id ="p3"> Earth date: {{photo.earth_date}} </p>
+      <p id ="p3"> Earth date: {{photo.earth_date}} </p> -->
+      <!-- <img :src="photo" width="500"> -->
+
 
 </div>
 </template>
 
 <script>
 
+// import { eventBus } from '../main.js';
 
-export default {
-    name: "mars-photo-item", 
-    props: ['photo']
-}
+// export default {
+//     name: "mars-photo-item", 
+//     props: ['photo']
+// }
+
+// mounted() {
+//     eventBus.$on('selected-date', (payload) => {
+//       this.photo = payload
+      
+//     })
+// }
 </script>
 
 <style>
-#apod {
+/* #apod {
     display: inline-grid;
     grid-gap: 10px 19px;
     justify-content: space-between;
@@ -36,7 +46,7 @@ export default {
        background-color: brown;
        color: cornsilk;
 
-}
+} */
 
 
 
