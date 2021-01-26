@@ -1,11 +1,10 @@
 <template>
     <div>
         <h2>EPIC</h2><br>
+        <span> 01</span>
         <epic-dates-dropdown :dates="allEpicDates"/>
-        <button v-on:click="getEpicArchivebyDate()">Archive</button>
-        <button v-on:click="getEpicRecent()">Today</button>
-        <button v-on:click="makeEpicArchiveEndPoint()">Make end point</button>
-        <button v-on:click="getArchiveImageNames()">GetImageName</button>
+        <button v-on:click="getArchiveImageNames()">02 GetImageNames</button>
+        <button v-on:click=" makeEpicArchiveImageUrls()">03 Make Urls</button>
         <img :src="liveEndPoint"/>
     </div>
 </template>
@@ -24,7 +23,7 @@ export default {
     data() {
         return {
             epicImage: null,
-            testUrl: "https://api.nasa.gov/EPIC/archive/natural/2019/05/30/jpg/epic_1b_20190530011359.jpg?api_key=",
+            // testUrl: "https://api.nasa.gov/EPIC/archive/natural/2019/05/30/jpg/epic_1b_20190530011359.jpg?api_key=",
             
             allEpicDatesEndPoint: "https://epic.gsfc.nasa.gov/api/natural/all",
             allEpicDates: [],
@@ -34,9 +33,9 @@ export default {
             selectedMonth: "",
             selectedDay: "",
 
+            epicArchiveEndPoint: "",
             
             epicMostRecentEndPoint: "https://api.nasa.gov/EPIC/api/natural/?api_key=",
-            epicArchiveEndPoint: "",
             archiveEndPointData: [],
             archiveImageNames: [], 
             archiveImageUrls: [],
@@ -78,22 +77,19 @@ export default {
         },
 
         getArchiveImageNames: function() {
-            // this.archiveEndPointData.forEach( el => console.log(el.image) );
+            this.archiveEndPointData.forEach( el => console.log('image name', el.image) );
             this.archiveEndPointData.forEach( el => this.archiveImageNames.push(el.image) );
         },
 
         makeEpicArchiveImageUrls: function() {
-            // let endpoint = `https://api.nasa.gov/EPIC/archive/natural/${this.selectedYear}/${this.selectedMonth}/${this.selectedDay}/jpg/${this.archiveImageNames[0]}.jpg?api_key=${key.nasa}`
-            // console.log(this.archiveImageNames.forEach( image => `https://api.nasa.gov/EPIC/archive/natural/${this.selectedYear}/${this.selectedMonth}/${this.selectedDay}/jpg/${image}.jpg?api_key=${key.nasa}` ))
-            for( let i = 0; this.archiveImageNames.length; i++){
-                this.archiveImageUrls.push(`https://api.nasa.gov/EPIC/archive/natural/${this.selectedYear}/${this.selectedMonth}/${this.selectedDay}/jpg/${archiveImageNames[i]}.jpg?api_key=${key.nasa}`)
-            }
+           console.log('year', this.selectedYear, this.selectedMonth, this.selectedDay)
+            console.log(this.archiveImageNames.map( image => `https://api.nasa.gov/EPIC/archive/natural/${this.selectedYear}/${this.selectedMonth}/${this.selectedDay}/jpg/${image}.jpg?api_key=${key.nasa}` ))
+           
+           // for( let i = 0; this.archiveImageNames.length; i++){
+                // this.archiveImageUrls.push(`https://api.nasa.gov/EPIC/archive/natural/${this.selectedYear}/${this.selectedMonth}/${this.selectedDay}/jpg/${archiveImageNames[i]}.jpg?api_key=${key.nasa}`)
+            // }
         }
 
-        // query json 
-        // findFirstIndexFromPartVal: (arr, key, query) => { 
-            // return arr.findIndex(el => el[(key)].indexOf(query) !== -1 )
-            // }
     },
     mounted() {
         // this.getEpicImage()
@@ -104,13 +100,13 @@ export default {
         eventBus.$on("date-selected", (selectedDate) => {
             this.selectedDate = selectedDate;
             console.log(this.selectedDate);
-            // this.parseDate();
+            this.parseDate();
 
             fetch(this.makeEpicArchiveEndPoint())
             .then(res => res.json())
-            .then(data => this.archiveEndPointData = data)
-            .then(this.getArchiveImageNames())
-            .then(this.makeEpicArchiveImageUrls());
+            .then(data => this.archiveEndPointData = data);
+            // .then(this.getArchiveImageNames());
+            // .then(this.makeEpicArchiveImageUrls());
 
         });
     }
