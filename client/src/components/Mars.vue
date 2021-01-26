@@ -1,19 +1,17 @@
 <template>
 <div id="mars">
-  <h1>Mars Rover Photos</h1>
-  <h3>Image data gathered by NASA's Curiosity, Opportunity, and Spirit rovers on Mars</h3>
-  <p>Search images by a specific date</p>
-<mars-date-item ></mars-date-item>
-<!-- <mars-photo-item :photo="marsPhotos[0].img_src"> </mars-photo-item> -->
-<img :src="marsPhotos[0].img_src" width="500">
+    <h1>Mars Rover Photos</h1>
+    <h3>Image data gathered by NASA's Curiosity, Opportunity, and Spirit rovers on Mars</h3>
+    <p>Search images by a specific date</p>
+
+  <mars-date-item ></mars-date-item>
+  <img :src="marsPhotos[0].img_src" width="500">
 
 </div>
 
 </template>
 
 <script>
-
-
 
 import { APIkey } from '@/assets/MARS_API_KEY'
 import MarsPhotoItem from './MarsPhotoItem.vue'
@@ -32,7 +30,6 @@ export default {
   data() {
     return {
     marsPhotos: [],
-    // datePic: null
     }
   },
 
@@ -48,13 +45,7 @@ export default {
       fetch(`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/latest_photos?api_key=${APIkey}&page=1`)
       .then( res => res.json())
       .then (data => this.marsPhotos = data.latest_photos)
-
-      
     },
-    
-
-
-  
   }
 
 }
