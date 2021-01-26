@@ -76,14 +76,18 @@ export default {
             return this.epicArchiveEndPoint  = `https://epic.gsfc.nasa.gov/api/natural/date/${this.selectedDate}?api_key=${key.nasa}`;
         },
 
-        getArchiveImageNames: function() {
-            this.archiveEndPointData.forEach( el => console.log('image name', el.image) );
-            return this.archiveImageNames = this.archiveEndPointData.map( obj => obj.image );
+        getArchiveImageNames: function(data) {
+            // this.archiveEndPointData.forEach( el => console.log('image name', el.image) );
+            // return this.archiveEndPointData.map( obj => obj.image );
+            // this.archiveImageNames = this.archiveEndPointData.map( obj => obj.image );
+            return data.map( obj => obj.image );
+            // console.log(this.archiveImageNames)
         },
 
         makeEpicArchiveImageUrls: function() {
-            console.log('urls', this.archiveImageNames.map( image => `https://api.nasa.gov/EPIC/archive/natural/${this.selectedYear}/${this.selectedMonth}/${this.selectedDay}/jpg/${image}.jpg?api_key=${key.nasa}` ));
-            return this.archiveImageUrls = this.archiveImageNames.map( image => `https://api.nasa.gov/EPIC/archive/natural/${this.selectedYear}/${this.selectedMonth}/${this.selectedDay}/jpg/${image}.jpg?api_key=${key.nasa}` );
+            // this.archiveImageUrls = this.archiveImageNames.map( image => `https://api.nasa.gov/EPIC/archive/natural/${this.selectedYear}/${this.selectedMonth}/${this.selectedDay}/jpg/${image}.jpg?api_key=${key.nasa}` );
+            return this.archiveImageNames.map( image => `https://api.nasa.gov/EPIC/archive/natural/${this.selectedYear}/${this.selectedMonth}/${this.selectedDay}/jpg/${image}.jpg?api_key=${key.nasa}` );
+            console.log(this.archiveImageUrls);
         }
 
     },
@@ -97,12 +101,14 @@ export default {
             this.selectedDate = selectedDate;
             console.log(this.selectedDate);
             this.parseDate();
+            let endpointdebug = this.makeEpicArchiveEndPoint()
+            console.log(endpointdebug);
 
-            fetch(this.makeEpicArchiveEndPoint())
+            fetch(endpointdebug)
             .then(res => res.json())
-            .then(data => this.archiveEndPointData = data);
-            // .then(this.getArchiveImageNames())
-            // .then(this.makeEpicArchiveImageUrls());
+            .then(data => this.archiveEndPointData = data)
+            .then(data => this.archiveImageNames = this.getArchiveImageNames(data))
+            .then(data => this.archiveImageUrls = this.makeEpicArchiveImageUrls());
 
         });
     }
