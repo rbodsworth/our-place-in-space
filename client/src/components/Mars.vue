@@ -1,9 +1,11 @@
 <template>
 <div id="mars">
-   <mars-date-item ></mars-date-item>
+   <!-- <mars-date-item ></mars-date-item> -->
+   <!-- <mars-date-item v-for="(photos, index) in datePic" :key="index" :photos="photos"  /> -->
+
   <h1>Mars Rover Photos</h1>
   <p>Image data gathered by NASA's Curiosity, Opportunity, and Spirit rovers on Mars</p>
-  <h3>{{datePic.photos[1].id}}</h3>
+<mars-date-item ></mars-date-item>
 <mars-photo-item v-for="(photo, index) in marsPhotos" :key="index" :photo="photo"/>
 
 </div>
@@ -40,12 +42,13 @@ export default {
 
      eventBus.$on('selected-date', (datePic) => {
       this.datePic = datePic
+      
     })
   },
 
   methods: {
     getPhotos: function(){
-      fetch(`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/latest_photos?api_key=${APIkey}`)
+      fetch(`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/latest_photos?api_key=${APIkey}&page=0`)
       .then( res => res.json())
       .then (data => this.marsPhotos = data.latest_photos)
 

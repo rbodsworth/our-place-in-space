@@ -6,7 +6,7 @@
       <p id="p1"> Rover name: {{photo.rover.name}} </p>
       <p id="p2"> Sol: {{photo.sol}}</p>
       <p id ="p3"> Earth date: {{photo.earth_date}} </p>
- <!-- <img :src="photo.img_src" width='500' > -->
+
 </div>
 </template>
 
