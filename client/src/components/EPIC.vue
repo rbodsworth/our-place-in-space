@@ -73,8 +73,6 @@ export default {
 
         makeEpicArchiveEndPoint: function() {
             return this.epicArchiveEndPoint  = `https://epic.gsfc.nasa.gov/api/natural/date/${this.selectedDate}?api_key=${key.nasa}`;
-            // return this.epicArchiveEndPoint  = `https://epic.gsfc.nasa.gov/api/enhanced/date/${this.selectedDate}?api_key=${key.nasa}`;
-            // return this.epicArchiveEndPoint  = `https://api.nasa.gov/EPIC/archive/natural/${this.selectedYear}/${this.selectedMonth}/${this.selectedDay}/?api_key=${key.nasa}`;
         },
 
         getArchiveImageNames: function() {
@@ -83,12 +81,7 @@ export default {
         },
 
         makeEpicArchiveImageUrls: function() {
-           console.log('year', this.selectedYear, this.selectedMonth, this.selectedDay)
-            console.log(this.archiveImageNames.map( image => `https://api.nasa.gov/EPIC/archive/natural/${this.selectedYear}/${this.selectedMonth}/${this.selectedDay}/jpg/${image}.jpg?api_key=${key.nasa}` ))
-           
-           // for( let i = 0; this.archiveImageNames.length; i++){
-                // this.archiveImageUrls.push(`https://api.nasa.gov/EPIC/archive/natural/${this.selectedYear}/${this.selectedMonth}/${this.selectedDay}/jpg/${archiveImageNames[i]}.jpg?api_key=${key.nasa}`)
-            // }
+            return this.archiveImageUrls = this.archiveImageNames.map( image => `https://api.nasa.gov/EPIC/archive/natural/${this.selectedYear}/${this.selectedMonth}/${this.selectedDay}/jpg/${image}.jpg?api_key=${key.nasa}` )
         }
 
     },
