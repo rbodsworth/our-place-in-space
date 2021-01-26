@@ -81,7 +81,8 @@ export default {
         },
 
         makeEpicArchiveImageUrls: function() {
-            return this.archiveImageUrls = this.archiveImageNames.map( image => `https://api.nasa.gov/EPIC/archive/natural/${this.selectedYear}/${this.selectedMonth}/${this.selectedDay}/jpg/${image}.jpg?api_key=${key.nasa}` )
+            console.log('urls', this.archiveImageNames.map( image => `https://api.nasa.gov/EPIC/archive/natural/${this.selectedYear}/${this.selectedMonth}/${this.selectedDay}/jpg/${image}.jpg?api_key=${key.nasa}` ));
+            return this.archiveImageUrls = this.archiveImageNames.map( image => `https://api.nasa.gov/EPIC/archive/natural/${this.selectedYear}/${this.selectedMonth}/${this.selectedDay}/jpg/${image}.jpg?api_key=${key.nasa}` );
         }
 
     },
@@ -98,9 +99,9 @@ export default {
 
             fetch(this.makeEpicArchiveEndPoint())
             .then(res => res.json())
-            .then(data => this.archiveEndPointData = data);
-            // .then(this.getArchiveImageNames());
-            // .then(this.makeEpicArchiveImageUrls());
+            .then(data => this.archiveEndPointData = data)
+            .then(this.getArchiveImageNames())
+            .then(this.makeEpicArchiveImageUrls());
 
         });
     }
