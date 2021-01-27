@@ -1,8 +1,8 @@
 <template>
     <div id='date'>
         <form v-on:submit.prevent="handleDateSubmit">
-            <label for="image_date">Search images by a specific date</label>
-            <input class ="date" input type="date" id="image_date" name="image_date" v-model="selected_date">
+            <label for="mars_image_date">Search images by a specific date</label>
+            <input class ="date" input type="date" id="mars_image_date" name="image_date" v-model="selected_date">
             <input class ="submit" type="submit">
         </form> 
     </div>

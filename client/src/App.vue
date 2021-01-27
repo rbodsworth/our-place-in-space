@@ -1,7 +1,7 @@
 <template>
 
-  <div id=main>
-    <h2>Astronomy Picture Of the Day</h2>
+  <div id="main">
+    <h1 class="title">Our Place in Space</h1>
     <apod></apod>
     <hr>
     <h2>Mars Rover Photos</h2>
@@ -28,23 +28,50 @@ export default {
 }
 
 </script>
-
 <style>
 
 
-.date {
-  margin: 20px;
-  
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: Helvetica, Arial, sans-serif ;
+    text-transform: uppercase;
 }
 
+p {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 22px;
+  line-height: 1.5;
+  text-align: left;
+}
+
+img { width: 100%; }
+
+body { margin: 0px }
 
 #main {
-  background-color: #140057;
-  background-image: url("https://www.transparenttextures.com/patterns/asfalt-light.png");
+  display: flex;
+  flex-direction: column;
+  background-image: linear-gradient(to bottom, #002857, #1d1d1d 57%, #050505);
+
+  /* background-color: #140057; */
+  /* background-image: url("https://www.transparenttextures.com/patterns/asfalt-light.png"); */
   color: white;
   text-align: center;
-  padding: 50px;
-  font-family: 'Roboto', sans-serif;
+  padding: 15px;
+  /* font-family: 'Roboto', sans-serif; */
 }
 
+.date {
+  margin: 20px;  
+}
+
+.date-input { margin-left:auto; }
+
+.title {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 40px;
+  text-transform:capitalize;
+  /* align-self: left; */
+  margin-right: auto;
+}
 </style>

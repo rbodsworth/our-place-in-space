@@ -1,17 +1,15 @@
 <template>
   <div id='apod'>
-    <date-form></date-form>
-      <h3 v-if="picOfTheDay"> Selected date: {{picOfTheDay.date}}</h3>
-      
-      <h3 v-if="picOfTheDay"> {{picOfTheDay.title}} </h3>
+      <div class="title-block">
+        <h3 v-if="picOfTheDay"> {{picOfTheDay.title}} </h3>
+        <h4 class="date-right" v-if="picOfTheDay"> {{picOfTheDay.date}}</h4>
+      </div>
       <div id="caption-picture">
         <img class="apod-image" v-if="picOfTheDay" :src="picOfTheDay.url">
-        <section>
-        <p class="caption" v-if="picOfTheDay"> {{picOfTheDay.explanation}}</p>
         <p v-if='picOfTheDay.copyright'> Photography Copyright: {{picOfTheDay.copyright}} </p>
-        </section>
+        <p v-if="picOfTheDay"> {{picOfTheDay.explanation}}</p>
       </div>
-
+    <date-form class="date-input"></date-form>
   </div>
 </template>
 
@@ -45,7 +43,7 @@ export default {
             .then(data => this.picOfTheDay = data)
             
             },
-    }
+        }
 }
     
 
@@ -55,35 +53,34 @@ export default {
 
 
 
-
-
-
-
-
 <style>
-.caption{
-  text-align: justify;
-  padding: 50px;
-  line-height: 2;
-  font-size:1vw;
+
+#apod {
+  display: flex;
+  flex-direction: column;
 }
 
-#caption-picture {
+.title-block {
   display: flex;
-  flex-direction: row;
+}
+
+/* #caption-picture {
+  display: flex;
+  flex-direction: column;
   justify-content: space-around;
   align-items: center;
+} */
+
+.date-right {
+  margin-left: auto;
+  font-weight: 100;
 }
 
-.apod-image {
-  width: 50%;
-  height: 50%;
-  max-width: 1000px;
-  max-height: 1000px;
-}
-
-
-
-
+/* .apod-image { */
+  /* width: 50%; */
+  /* height: 50%; */
+  /* max-width: 1000px; */
+  /* max-height: 1000px; */
+/* } */
 
 </style>
