@@ -1,6 +1,7 @@
 <template>
-  <div>
+  <div id=main>
     <apod></apod>
+    <hr>
     <mars></mars>
   </div>
 </template>
@@ -23,5 +24,9 @@ export default {
 </script>
 
 <style>
+#main 
+  { background-image: linear-gradient(to bottom, #002857, #1d1d1d 57%, #050505);
+
+}
 
 </style>

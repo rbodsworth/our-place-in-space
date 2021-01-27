@@ -55,10 +55,6 @@ export default {
 
 <style>
 
-#main { background-image: linear-gradient(to bottom, #002857, #1d1d1d 57%, #050505);
-
-}
-
 #heads {
   text-align: center;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
