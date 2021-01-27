@@ -2,7 +2,7 @@
   <div id="app">
     <mars></mars>
     <epic-image/>
-  <div>
+  </div>
 </template>
 
 <script>
