@@ -9,7 +9,7 @@
       <p v-if='picOfTheDay.copyright'> Copyright: {{picOfTheDay.copyright}} </p>
 
       <h2>Explanation</h2>
-      <p> {{picOfTheDay.explanation}}</p>
+      <p class="caption"> {{picOfTheDay.explanation}}</p>
 
   </div>
 </template>
@@ -52,6 +52,16 @@ export default {
 </script>
 
 
+
+
+
+
+
+
+
 <style>
+.caption{
+  text-align: justify;
+}
 
 </style>

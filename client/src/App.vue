@@ -55,10 +55,12 @@ export default {
 
 
 #main {
-  background-color: darkblue;
+  background-color: #140057;
+  background-image: url("https://www.transparenttextures.com/patterns/asfalt-light.png");
   color: white;
   text-align: center;
   padding: 50px;
+  font-family: 'Roboto', sans-serif;
 }
 
 </style>
