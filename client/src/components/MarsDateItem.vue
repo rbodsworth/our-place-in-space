@@ -1,16 +1,11 @@
 <template>
-
     <div id='date'>
         <form v-on:submit.prevent="handleDateSubmit">
-            <label for="image_date"></label>
-            <input type="date" id="image_date" name="image_date" v-model="selected_date">
-            <input type="submit">
+            <label for="image_date">Search images by a specific date</label>
+            <input class ="date" input type="date" id="image_date" name="image_date" v-model="selected_date">
+            <input class ="submit" type="submit">
         </form> 
-
-        <!-- <img v-if="datePic" :src="datePic[1].img_src" width="500"> -->
-        
-        <!-- <h3 v-if="datePic">Earth Date: {{datePic[1].earth_date}}</h3>  -->
-            </div>
+    </div>
             
             
             
@@ -29,7 +24,6 @@ export default {
         return {
             selected_date: null,
             datePic: null
-
         }
     },
     
@@ -40,17 +34,8 @@ export default {
       .then( res => res.json())
       .then(data => {
           this.datePic = data.photos
-          eventBus.$emit("date-selected", this.datePic)  
-      }
-          
-          )
-      
-      
-
-    // eventBus.$emit("selected-date", this.datePic)
-
-
-
+          eventBus.$emit("selected-date", this.datePic)  
+      })
 }}}
 
 

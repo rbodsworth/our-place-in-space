@@ -1,15 +1,16 @@
 <template>
   <div id='apod'>
     <date-form></date-form>
-      <h3> Date: {{picOfTheDay.date}}</h3>
+      <h3 v-if="picOfTheDay"> Selected date: {{picOfTheDay.date}}</h3>
       
-      <h2>Picture of the day</h2>
-      <h3> {{picOfTheDay.title}} </h3>
-      <img :src="picOfTheDay.url" width='500'>
-      <p> Copyright: {{picOfTheDay.copyright}} </p>
-
-      <h2>Explanation</h2>
-      <p> {{picOfTheDay.explanation}}</p>
+      <h3 v-if="picOfTheDay"> {{picOfTheDay.title}} </h3>
+      <div id="caption-picture">
+        <img class="apod-image" v-if="picOfTheDay" :src="picOfTheDay.url">
+        <section>
+        <p class="caption" v-if="picOfTheDay"> {{picOfTheDay.explanation}}</p>
+        <p v-if='picOfTheDay.copyright'> Photography Copyright: {{picOfTheDay.copyright}} </p>
+        </section>
+      </div>
 
   </div>
 </template>
@@ -44,37 +45,45 @@ export default {
             .then(data => this.picOfTheDay = data)
             
             },
-      
     }
 }
-        
+    
 
 
-    // EVERYTHING BELOW IS OUTSIDE OF OUR EXPORT DEFAULT()
-    // computed: {
-      
-      // updateDate: function(){
-      //   eventBus.$on("date-selected",  (date_selected_form) => {
-      //     return payload = this.dateSelected;
-      //   }) 
-      // }
-    // }
-
-    // updatedPic() {
-      //   eventBus.$on("selected-date", (picOfTheDate) => this.picOfTheDay = picOfTheDate)}
-        
-      // getUpdatedPic: function(`https://api.nasa.gov/planetary/apod?api_key=${APIkey}&date=${this.dateSelected}`)
-      //       .then ( res => res.json())
-      //       .then (data => this.picOfTheDate = data)
-
-// }
 </script>
 
+
+
+
+
+
+
+
+
 <style>
-
-
-#apod {
-  text-align: center;
+.caption{
+  text-align: justify;
+  padding: 50px;
+  line-height: 2;
+  font-size:1vw;
 }
+
+#caption-picture {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.apod-image {
+  width: 50%;
+  height: 50%;
+  max-width: 1000px;
+  max-height: 1000px;
+}
+
+
+
+
 
 </style>

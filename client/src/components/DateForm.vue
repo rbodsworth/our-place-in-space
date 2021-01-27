@@ -1,9 +1,9 @@
 <template>
     <div>
         <form v-on:submit.prevent="handleDateSubmit">
-            <label for="image_date">Select a date</label>
-            <input type="date" id="image_date" name="image_date" v-model="date_selected_form">
-            <input type="submit">
+            <label for="image_date">Search images by a specific date</label>
+            <input class="date" type="date" id="image_date" name="image_date" v-model="date_selected_form">
+            <input class='submit' type="submit">
         </form> 
     </div>
   
@@ -28,7 +28,15 @@ export default {
             .then ((picOfTheDate) => {
                 this.picOfTheDate = picOfTheDate
                 eventBus.$emit("date-selected", this.picOfTheDate)
+                eventBus.$emit("date-test", this.picOfTheDate.date)
             })
+
+            
+
+
+
+
+
         }
     }  
 }

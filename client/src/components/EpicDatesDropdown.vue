@@ -20,7 +20,7 @@ export default {
     props: ['dates'],
     methods: {
         handleSelect() {
-            eventBus.$emit('date-selected', this.selectedDate)
+            eventBus.$emit('epic-date-selected', this.selectedDate)
         }
     }
 }

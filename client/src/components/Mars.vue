@@ -1,19 +1,26 @@
 <template>
-<div id="mars">
-  <h1>Mars Rover Photos</h1>
+<div id = "marsmain">
   <h3>Image data gathered by NASA's Curiosity, Opportunity, and Spirit rovers on Mars</h3>
-  <p>Search images by a specific date</p>
-<mars-date-item ></mars-date-item>
-<!-- <mars-photo-item :photo="marsPhotos[0].img_src"> </mars-photo-item> -->
-<img :src="marsPhotos[0].img_src" width="500">
+  <mars-date-item ></mars-date-item>
 
+<div id ="caption-picture">
+  <img class="mars-image" v-if="marsPhotos" :src="marsPhotos[0].img_src">
+  
+  <div id="marscap">
+  <p class="marscaption">Earth date: {{marsPhotos[0].earth_date}}</p>
+  <p>Mars sol: {{marsPhotos[0].sol}}</p>
+  <p>Rover name: {{marsPhotos[0].rover.name}}</p>
+  <p>Landing date: {{marsPhotos[0].rover.landing_date}}</p>
+  <p>Launch date: {{marsPhotos[0].rover.launch_date}}</p>
+  <p>Rover status: {{marsPhotos[0].rover.status}}</p>
+  </div>
 </div>
+</div>
+
 
 </template>
 
 <script>
-
-
 
 import { APIkey } from '@/assets/MARS_API_KEY'
 import MarsPhotoItem from './MarsPhotoItem.vue'
@@ -32,14 +39,13 @@ export default {
   data() {
     return {
     marsPhotos: [],
-    // datePic: null
     }
   },
 
   mounted () {
     this.getPhotos()
     
-    eventBus.$on('date-selected', (payload) => this.marsPhotos = payload)
+    eventBus.$on('selected-date', (payload) => this.marsPhotos = payload)
 
   },
 
@@ -48,22 +54,21 @@ export default {
       fetch(`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/latest_photos?api_key=${APIkey}&page=1`)
       .then( res => res.json())
       .then (data => this.marsPhotos = data.latest_photos)
-
-      
     },
-    
-
-
-  
   }
 
 }
 </script>
 
 <style>
-#mars {
-  text-align: center;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+ .mars-image {
+  width: 50%;
+  height: 50%;
+  max-width: 1000px;
+  max-height: 1000px;
 }
+
+
 
 </style>

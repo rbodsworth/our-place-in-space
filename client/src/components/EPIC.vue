@@ -134,7 +134,7 @@ export default {
             .then(res => res.json())
             .then(data => this.relevantData = data)),
 
-        eventBus.$on("date-selected", (date) => {
+        eventBus.$on("epic-date-selected", (date) => {
             this.selectedDate = date;
             this.activeDate = date;
             this.parseDate();
