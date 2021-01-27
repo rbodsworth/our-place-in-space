@@ -70,7 +70,7 @@ export default {
             console.log(this.selectedYear, this.selectedMonth, this.selectedDay)
         },
 
-        makeNewEndPoint: function(selectedDate) {
+        makeRelevantEndPoint: function(selectedDate) {
             if(selectedDate) {
                 this.imageNamesEndPoint = `https://api.nasa.gov/EPIC/api/natural/date/${this.selectedDate}?api_key=${key.nasa}`;
             } else {
@@ -81,7 +81,6 @@ export default {
 
         makeEpicMostRecentEndPoint: function() {
             this.mostRecent = `https://api.nasa.gov/EPIC/api/natural/?api_key=${key.nasa}`
-            console.log
         },
 
         makeEpicArchiveEndPoint: function() {
@@ -102,7 +101,7 @@ export default {
         .then(res => res.json())
         .then(data => this.allEpicDates = data)
        
-       .then(this.makeNewEndPoint())
+       .then(this.makeRelevantEndPoint(this.selectedDate))
 
         // .then(fetch(this.mostRecentEndPoint))
         // .then(res => res.json())
@@ -121,7 +120,7 @@ export default {
             .then(data => this.archiveImageNames = this.getArchiveImageNames(data))
             .then(data => this.archiveImageUrls = this.makeEpicArchiveImageUrls())
 
-            .then(this.makeNewEndPoint);
+            .then(this.makeRelevantEndPoint(this.selectedDate));
         });
     }
 
