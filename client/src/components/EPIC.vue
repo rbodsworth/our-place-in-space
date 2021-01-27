@@ -35,7 +35,8 @@ export default {
             epicArchiveEndPoint: "",
             
             epicMostRecentEndPoint: "https://api.nasa.gov/EPIC/api/natural/?api_key=", //returns obj with image names
-            mostRecent: null,
+            // mostRecent: null,
+            relevantInfo: null,
 
             imageNamesEndPoint: null,
 
@@ -70,13 +71,20 @@ export default {
             console.log(this.selectedYear, this.selectedMonth, this.selectedDay)
         },
 
+        // makeRelevantEndPoint: function(selectedDate) {
+        //     if(selectedDate) {
+        //         return `https://api.nasa.gov/EPIC/api/natural/date/${this.selectedDate}?api_key=${key.nasa}`
+        //     } else {
+        //         return `https://api.nasa.gov/EPIC/api/natural/?api_key=${key.nasa}`
+        //     }
+        // },
+        
         makeRelevantEndPoint: function(selectedDate) {
             if(selectedDate) {
-                this.imageNamesEndPoint = `https://api.nasa.gov/EPIC/api/natural/date/${this.selectedDate}?api_key=${key.nasa}`;
+                this.imageNamesEndPoint = `https://api.nasa.gov/EPIC/api/natural/date/${this.selectedDate}?api_key=${key.nasa}`
             } else {
                 this.imageNamesEndPoint = `https://api.nasa.gov/EPIC/api/natural/?api_key=${key.nasa}`
             }
-            console.log(this.imageNamesEndPoint);
         },
 
         makeEpicMostRecentEndPoint: function() {
@@ -96,15 +104,22 @@ export default {
         }
     },
 
+
     mounted() {
         fetch(this.allEpicDatesEndPoint)
         .then(res => res.json())
         .then(data => this.allEpicDates = data)
        
-       .then(this.makeRelevantEndPoint(this.selectedDate))
+        .then(this.makeRelevantEndPoint(this.selectedDate))
+        .then(fetch(this.imageNamesEndPoint))
+        .then(res => res.json())
+        .then(data => relevantInfo = data)
+    //   .then(this.imageNamesEndPoint = this.makeRelevantEndPoint(this.selectedDate))
 
-        // .then(fetch(this.mostRecentEndPoint))
+
+        // .then(fetch(this.imageNamesEndPoint))
         // .then(res => res.json())
+        // .then(data => this.imageNames = data.map.image);
         // .then(data => mostRecentData = data)
         // .then(console.log(mostRecentData));
 
