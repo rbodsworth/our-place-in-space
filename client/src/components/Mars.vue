@@ -4,7 +4,7 @@
   <mars-date-item ></mars-date-item>
 
 <div id ="caption-picture">
-  <img v-if="marsPhotos[0].img_src" class="mars-image" :src="marsPhotos[0].img_src">
+  <img class="mars-image" v-if="marsPhotos" :src="marsPhotos[0].img_src">
   
   <div id="marscap">
   <p class="marscaption">Earth date: {{marsPhotos[0].earth_date}}</p>
@@ -45,7 +45,7 @@ export default {
   mounted () {
     this.getPhotos()
     
-    eventBus.$on('date-selected', (payload) => this.marsPhotos = payload)
+    eventBus.$on('selected-date', (payload) => this.marsPhotos = payload)
 
   },
 

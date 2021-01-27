@@ -40,7 +40,7 @@ export default {
       .then( res => res.json())
       .then(data => {
           this.datePic = data.photos
-          eventBus.$emit("date-selected", this.datePic)  
+          eventBus.$emit("selected-date", this.datePic)  
       }
           
           )
