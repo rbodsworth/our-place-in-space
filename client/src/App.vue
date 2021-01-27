@@ -1,27 +1,27 @@
 <template>
   <div id="app">
+    <mars></mars>
     <epic-image/>
-  </div>
+  <div>
 </template>
 
 <script>
-import EPIC from './components/EPIC'
+
+import EPIC from './components/EPIC';
+import Mars from './components/Mars.vue';
+// import Apod from './components/Apod.vue';
 
 export default {
-  name: 'App',
+  name: 'app',
   components: {
+    'mars' : Mars,
     "epic-image": EPIC
+    // 'apod' : Apod
   }
 }
+
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>

@@ -1,0 +1,61 @@
+<template>
+
+    <div id='date'>
+        <form v-on:submit.prevent="handleDateSubmit">
+            <label for="image_date"></label>
+            <input type="date" id="image_date" name="image_date" v-model="selected_date">
+            <input type="submit">
+        </form> 
+
+        <!-- <img v-if="datePic" :src="datePic[1].img_src" width="500"> -->
+        
+        <!-- <h3 v-if="datePic">Earth Date: {{datePic[1].earth_date}}</h3>  -->
+            </div>
+            
+            
+            
+            
+</template>
+
+<script>
+
+import { APIkey } from '@/assets/MARS_API_KEY'
+import { eventBus } from '../main.js';
+
+export default {
+    name: 'mars-date-item',
+
+    data () {
+        return {
+            selected_date: null,
+            datePic: null
+
+        }
+    },
+    
+
+    methods: {
+      handleDateSubmit(){
+      fetch(`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=${this.selected_date}&api_key=${APIkey}`)
+      .then( res => res.json())
+      .then(data => {
+          this.datePic = data.photos
+          eventBus.$emit("date-selected", this.datePic)  
+      }
+          
+          )
+      
+      
+
+    // eventBus.$emit("selected-date", this.datePic)
+
+
+
+}}}
+
+
+</script>
+
+<style>
+
+</style>
