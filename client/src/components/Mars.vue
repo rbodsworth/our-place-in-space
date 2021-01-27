@@ -3,14 +3,18 @@
   <h3>Image data gathered by NASA's Curiosity, Opportunity, and Spirit rovers on Mars</h3>
   <mars-date-item ></mars-date-item>
 
-  <img :src="marsPhotos[0].img_src" width="800">
-  <div id="marscap">
+<div id ="caption-picture">
+  <img v-if="marsPhotos[0].img_src" class="mars-image" :src="marsPhotos[0].img_src">
   
-  <p class="marscaption">Earth date: {{marsPhotos[0].earth_date}}
-  Mars sol: {{marsPhotos[0].sol}}
-  Rover name: {{marsPhotos[0].rover.name}}</p>
+  <div id="marscap">
+  <p class="marscaption">Earth date: {{marsPhotos[0].earth_date}}</p>
+  <p>Mars sol: {{marsPhotos[0].sol}}</p>
+  <p>Rover name: {{marsPhotos[0].rover.name}}</p>
+  <p>Landing date: {{marsPhotos[0].rover.landing_date}}</p>
+  <p>Launch date: {{marsPhotos[0].rover.launch_date}}</p>
+  <p>Rover status: {{marsPhotos[0].rover.status}}</p>
   </div>
-
+</div>
 </div>
 
 
@@ -58,10 +62,13 @@ export default {
 
 <style>
 
-/* #heads {
-  text-align: center;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-} */
+ .mars-image {
+  width: 50%;
+  height: 50%;
+  max-width: 1000px;
+  max-height: 1000px;
+}
+
 
 
 </style>

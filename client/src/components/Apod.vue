@@ -1,13 +1,15 @@
 <template>
   <div id='apod'>
     <date-form></date-form>
-      <h3> Date: {{picOfTheDay.date}}</h3>
+      <h3> Selected date: {{picOfTheDay.date}}</h3>
       
       <h3> {{picOfTheDay.title}} </h3>
       <div id="caption-picture">
-        <img :src="picOfTheDay.url">
-        <p v-if='picOfTheDay.copyright'> Copyright: {{picOfTheDay.copyright}} </p>
+        <img class="apod-image" :src="picOfTheDay.url">
+        <section>
         <p class="caption"> {{picOfTheDay.explanation}}</p>
+        <p v-if='picOfTheDay.copyright'> Photography Copyright: {{picOfTheDay.copyright}} </p>
+        </section>
       </div>
 
   </div>
@@ -73,11 +75,12 @@ export default {
   align-items: center;
 }
 
-img {
+.apod-image {
   width: 50%;
   height: 50%;
+  max-width: 1000px;
+  max-height: 1000px;
 }
-
 
 
 
