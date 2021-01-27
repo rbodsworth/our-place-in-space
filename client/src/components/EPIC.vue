@@ -24,7 +24,9 @@ export default {
             epicImage: null,
             // testUrl: "https://api.nasa.gov/EPIC/archive/natural/2019/05/30/jpg/epic_1b_20190530011359.jpg?api_key=",
             
+            // 1st api end point
             allEpicDatesEndPoint: "https://epic.gsfc.nasa.gov/api/natural/all",
+            // data returned from first api end point
             allEpicDates: [],
             
             selectedDate: null,
@@ -100,14 +102,27 @@ export default {
             console.log(this.relevantEndPoint)
         },
 
+        mapImageNames: function(data) {
+            return data.map (obj => obj.image)
+        },
+
+        getTheDate: function() {
+            if(this.activeDate) {
+                this.activeDate = data[0].date
+                console.log(this.activeDate);
+            }
+        },
+
+
+        makeImageUrls: function() {
+            return this.imageNames.map( image => `https://api.nasa.gov/EPIC/archive/natural/${this.selectedYear}/${this.selectedMonth}/${this.selectedDay}/jpg/${image}.jpg?api_key=${key.nasa}` );
+        },
+
 
         makeEpicArchiveEndPoint: function() {
             return this.epicArchiveEndPoint  = `https://api.nasa.gov/EPIC/api/natural/date/${this.selectedDate}?api_key=${key.nasa}`;
         },
 
-        mapImageNames: function(data) {
-            return data.map (obj => obj.image)
-        },
 
         getArchiveImageNames: function(data) {
             return data.map( obj => obj.image );
@@ -130,6 +145,7 @@ export default {
             .then(res => res.json())
             .then(data => this.relevantData = data)
             .then(data => this.imageNames = this.mapImageNames(data))
+            .then(this.getTheDate())
             );
         
         // build url with image names
