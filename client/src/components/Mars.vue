@@ -33,18 +33,21 @@ export default {
   data() {
     return {
     marsPhotos: [],
-    datePic: []
+    datePic: [],
+    selectedDateForAll: null
     }
   },
 
   mounted () {
     this.getPhotos()
 
-     eventBus.$on('selected-date', (datePic) => {
-      this.datePic = datePic
+    //  eventBus.$on('selected-date', (datePic) => {
+    //   this.datePic = datePic
+ 
+    eventBus.$on("date-test", (payload) => this.selectedDateForAll = payload)
+
       
-    })
-  },
+    },
 
   methods: {
     getPhotos: function(){
@@ -53,7 +56,7 @@ export default {
       .then (data => this.marsPhotos = data.latest_photos)
 
       
-    },
+    }
 
 
   

@@ -1,21 +1,23 @@
 <template>
   <div>
+    <apod></apod>
     <mars></mars>
-    <!-- <apod></apod> -->
   </div>
 </template>
 
 <script>
 
 import Mars from './components/Mars.vue';
-// import Apod from './components/Apod.vue';
+import Apod from './components/Apod.vue';
+import DateForm from './components/DateForm.vue';
 
 export default {
   name: 'app',
   components: {
     'mars' : Mars,
-    // 'apod' : Apod
-  }
+    'apod' : Apod,
+    'date-form' : DateForm
+  },
 }
 
 </script>

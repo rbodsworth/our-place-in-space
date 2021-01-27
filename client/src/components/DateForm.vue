@@ -28,7 +28,15 @@ export default {
             .then ((picOfTheDate) => {
                 this.picOfTheDate = picOfTheDate
                 eventBus.$emit("date-selected", this.picOfTheDate)
+                eventBus.$emit("date-test", this.picOfTheDate.date)
             })
+
+            
+
+
+
+
+
         }
     }  
 }
