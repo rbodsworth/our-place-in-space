@@ -1,20 +1,20 @@
 <template>
-<div id = "marsmain">
-  <h3>Image data gathered by NASA's Curiosity, Opportunity, and Spirit rovers on Mars</h3>
-  <mars-date-item ></mars-date-item>
+<div id="marsmain">
+  <h2 class="subtitle">Our closest neighbour is a frozen desert</h2>
+  <h3>Today's photo from Mars</h3>
+  <mars-date-item class="date-input"></mars-date-item>
 
-<div id ="caption-picture">
   <img class="mars-image" v-if="marsPhotos" :src="marsPhotos[0].img_src">
-  
+
   <div id="marscap">
-  <p class="marscaption">Earth date: {{marsPhotos[0].earth_date}}</p>
-  <p>Mars sol: {{marsPhotos[0].sol}}</p>
-  <p>Rover name: {{marsPhotos[0].rover.name}}</p>
-  <p>Landing date: {{marsPhotos[0].rover.landing_date}}</p>
-  <p>Launch date: {{marsPhotos[0].rover.launch_date}}</p>
-  <p>Rover status: {{marsPhotos[0].rover.status}}</p>
+    <span class="marscaption">Date: <strong>{{marsPhotos[0].earth_date}}</strong></span>
+    <span>Sol: <strong>{{marsPhotos[0].sol}}</strong></span>
+    <span>Name: <strong>{{marsPhotos[0].rover.name}}</strong></span>
+    <span>Launch date: <strong>{{marsPhotos[0].rover.launch_date}}</strong></span>
+    <span>Landing date: <strong>{{marsPhotos[0].rover.landing_date}}</strong></span>
+    <span>Status: <strong>{{marsPhotos[0].rover.status}}</strong></span>
   </div>
-</div>
+
 </div>
 
 
@@ -62,6 +62,22 @@ export default {
 
 <style>
 
+#marsmain {
+  display: flex;
+  flex-direction: column;
+}
+
+#marscap {
+  margin-top: 15px;
+  margin-left: auto;
+}
+
+#marscap > span {
+  margin-left: 10px;
+  text-transform: uppercase;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 12px;
+}
  /* .mars-image {
   width: 50%;
   height: 50%;

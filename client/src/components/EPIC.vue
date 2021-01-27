@@ -1,7 +1,7 @@
 <template>
     <div>
+        <h2 class="subtitle">What does our future hold?</h2>
         <h2>EPIC</h2><br>
-        <span> 01</span>
         <epic-dates-dropdown :dates="allEpicDates"/>
         <img v-if="archiveImageUrls" :src="archiveImageUrls[0]"/>
         <img v-else :src="liveEndPoint" />

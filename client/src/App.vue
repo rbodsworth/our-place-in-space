@@ -36,13 +36,15 @@ h1, h2, h3, h4, h5, h6 {
     font-family: Helvetica, Arial, sans-serif ;
     text-transform: uppercase;
     text-align: left;
+    max-width: 800px;
 }
 
 p {
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-size: 20px;
-  line-height: 1.36;
+  line-height: 1.46;
   text-align: left;
+  max-width: 800px;
 }
 
 img { width: 100%; }
