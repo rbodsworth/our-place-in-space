@@ -26,11 +26,17 @@ export default {
             
             allEpicDatesEndPoint: "https://epic.gsfc.nasa.gov/api/natural/all",
             allEpicDates: [],
+            
             selectedDate: null,
+            activeDate: null,
 
             selectedYear: "",
             selectedMonth: "",
             selectedDay: "",
+           
+            activeYear: "",
+            activeMonth: "",
+            activeDay: "",
 
             epicArchiveEndPoint: "",
             
