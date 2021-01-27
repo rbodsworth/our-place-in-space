@@ -34,9 +34,14 @@ export default {
 
             epicArchiveEndPoint: "",
             
-            epicMostRecentEndPoint: "https://api.nasa.gov/EPIC/api/natural/?api_key=", //returns obj with image names
-            // mostRecent: null,
-            relevantInfo: null,
+            // epicMostRecentEndPoint: "https://api.nasa.gov/EPIC/api/natural/?api_key=", //returns obj with image names
+
+            // relevantInfo: null,
+            relevantImageNames: null,
+            relevantData: null,
+            relevantEndPoint: null,
+
+            imageNames:null,
 
             imageNamesEndPoint: null,
 
@@ -46,10 +51,8 @@ export default {
             
             
             liveEndPoint: "https://api.nasa.gov/EPIC/archive/natural/2019/05/30/jpg/epic_1b_20190530011359.jpg?api_key=II98yPghSJkmCYT5tLCetb1xvGuLEZ4yieHiJDbc",
-            // mostRecentEndPoint: "https://api.nasa.gov/EPIC/archive/natural", //returns nada
 
             mostRecentData: null
-            // add api key, get image name, get url
         }
     },
     methods: {
@@ -71,28 +74,25 @@ export default {
             console.log(this.selectedYear, this.selectedMonth, this.selectedDay)
         },
 
-        // makeRelevantEndPoint: function(selectedDate) {
-        //     if(selectedDate) {
-        //         return `https://api.nasa.gov/EPIC/api/natural/date/${this.selectedDate}?api_key=${key.nasa}`
-        //     } else {
-        //         return `https://api.nasa.gov/EPIC/api/natural/?api_key=${key.nasa}`
-        //     }
-        // },
-        
-        makeRelevantEndPoint: function(selectedDate) {
+        chooseRelevantEndPoint: function(selectedDate) {
             if(selectedDate) {
-                this.imageNamesEndPoint = `https://api.nasa.gov/EPIC/api/natural/date/${this.selectedDate}?api_key=${key.nasa}`
+                this.relevantEndPoint = `https://api.nasa.gov/EPIC/api/natural/date/${this.selectedDate}?api_key=${key.nasa}`
             } else {
-                this.imageNamesEndPoint = `https://api.nasa.gov/EPIC/api/natural/?api_key=${key.nasa}`
+                this.relevantEndPoint = `https://api.nasa.gov/EPIC/api/natural/?api_key=${key.nasa}`
             }
+            console.log(this.relevantEndPoint)
         },
 
-        makeEpicMostRecentEndPoint: function() {
-            this.mostRecent = `https://api.nasa.gov/EPIC/api/natural/?api_key=${key.nasa}`
-        },
+        // makeEpicMostRecentEndPoint: function() {
+        //     this.mostRecent = `https://api.nasa.gov/EPIC/api/natural/?api_key=${key.nasa}`
+        // },
 
         makeEpicArchiveEndPoint: function() {
             return this.epicArchiveEndPoint  = `https://api.nasa.gov/EPIC/api/natural/date/${this.selectedDate}?api_key=${key.nasa}`;
+        },
+
+        mapImageNames: function(data) {
+            return data.map (obj => obj.image)
         },
 
         getArchiveImageNames: function(data) {
@@ -110,18 +110,18 @@ export default {
         .then(res => res.json())
         .then(data => this.allEpicDates = data)
        
-        .then(this.makeRelevantEndPoint(this.selectedDate))
-        .then(fetch(this.imageNamesEndPoint))
-        .then(res => res.json())
-        .then(data => relevantInfo = data)
-    //   .then(this.imageNamesEndPoint = this.makeRelevantEndPoint(this.selectedDate))
+        .then(this.chooseRelevantEndPoint(this.selectedDate))
+        .then(
+            fetch(this.relevantEndPoint)
+            .then(res => res.json())
+            .then(data => this.relevantData = data)
+            .then(data => this.imageNames = this.mapImageNames(data))
+            );
+        
+        // strip image name from relevant data
+        // build url with image names
+        // fetch with those image
 
-
-        // .then(fetch(this.imageNamesEndPoint))
-        // .then(res => res.json())
-        // .then(data => this.imageNames = data.map.image);
-        // .then(data => mostRecentData = data)
-        // .then(console.log(mostRecentData));
 
 
         eventBus.$on("date-selected", (selectedDate) => {
@@ -132,10 +132,10 @@ export default {
             fetch(this.makeEpicArchiveEndPoint())
             .then(res => res.json())
             .then(data => this.archiveEndPointData = data)
-            .then(data => this.archiveImageNames = this.getArchiveImageNames(data))
+            .then(data => this.archiveImageNames = this.mapImageNames(data))
             .then(data => this.archiveImageUrls = this.makeEpicArchiveImageUrls())
 
-            .then(this.makeRelevantEndPoint(this.selectedDate));
+            .then(this.chooseRelevantEndPoint(this.selectedDate));
         });
     }
 
