@@ -10,7 +10,7 @@
         <p v-if='picOfTheDay.copyright'> Photography Copyright: {{picOfTheDay.copyright}} </p>
         <p v-if="picOfTheDay"> {{picOfTheDay.explanation}}</p>
       </div>
-    <date-form class="date-input"></date-form>
+    <!-- <date-form class="date-input"></date-form> -->
   </div>
 </template>
 
@@ -26,24 +26,27 @@ export default {
     },
     data () {
       return {
-        picOfTheDay: undefined
+        // picOfTheDay: undefined
+        datePicked: undefined
       }
     },
 
     mounted () {
-      this.getApod()
-
-      eventBus.$on("date-selected", (payload) => this.picOfTheDay = payload)
-
+      this.getApodToday()
+      // eventBus.$on("date-picked", (payload) => this.picOfTheDay = payload)
+      eventBus.$on("date-picked", (date => this.datePicked = date))
     },
     
     methods: {
-        getApod: function(){
+        getApodToday: function(){
             fetch(`https://api.nasa.gov/planetary/apod?api_key=${APIkey}`)
             .then(res => res.json())
             .then(data => this.picOfTheDay = data)
-            
-            },
+        },
+
+        getApodByDate: function(){
+
+        }
         }
 }
     

@@ -1,8 +1,8 @@
 <template>
     <div>
-        <form v-on:submit.prevent="handleDateSubmit">
+        <form v-on:submit.prevent="handleDatePic">
             <label for="image_date">Search images by a specific date</label>
-            <input class="date" type="date" id="image_date" name="image_date" v-model="date_selected_form">
+            <input class="date" type="date" id="image_date" name="image_date" v-model="datePic">
             <input class='submit' type="submit">
         </form> 
     </div>
@@ -16,30 +16,29 @@ export default {
     name: 'date-form',
     data() {
         return{
-            date_selected_form: null,
-            picOfTheDate: null
+            datePic: null
+            // picOfTheDate: null
         }
     },
 
     methods: {
-        handleDateSubmit(){
-            fetch (`https://api.nasa.gov/planetary/apod?api_key=${APIkey}&date=${this.date_selected_form}`)
-            .then ( res => res.json())
-            .then ((picOfTheDate) => {
-                this.picOfTheDate = picOfTheDate
-                eventBus.$emit("date-selected", this.picOfTheDate)
-                eventBus.$emit("date-test", this.picOfTheDate.date)
-            })
-
-            
-
-
-
-
-
+        handleDatePic() {
+            eventBus.$emit('date-picked', this.datePic)
+            console.log('datePicked', datePic);
+            // console.log('date_selected_form', date_selected_form);
         }
-    }  
+    }
 }
+
+        // handleDateSubmit(){
+        //     fetch (`https://api.nasa.gov/planetary/apod?api_key=${APIkey}&date=${this.date_selected_form}`)
+        //     .then ( res => res.json())
+        //     .then ((picOfTheDate) => {
+        //         this.picOfTheDate = picOfTheDate
+        //         eventBus.$emit("date-selected", this.picOfTheDate)
+        //         eventBus.$emit("date-test", this.picOfTheDate.date)
+        //     })
+
 
 </script>
 

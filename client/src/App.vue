@@ -7,6 +7,7 @@
     <h2>Mars Rover Photos</h2>
     <mars></mars>
     <epic-image/>
+    <date-form/>
   </div>
 </template>
 

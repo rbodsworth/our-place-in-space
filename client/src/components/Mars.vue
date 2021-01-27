@@ -2,7 +2,8 @@
 <div id="marsmain">
   <h2 class="subtitle">Our closest neighbour is a frozen desert</h2>
   <h3>Today's photo from Mars</h3>
-  <mars-date-item class="date-input"></mars-date-item>
+  <!-- <mars-date-item class="date-input"></mars-date-item> -->
+  <!-- <date-item class="date-input"/> -->
 
   <img class="mars-image" v-if="marsPhotos" :src="marsPhotos[0].img_src">
 
@@ -17,36 +18,38 @@
 
 </div>
 
-
 </template>
+
 
 <script>
 
 import { APIkey } from '@/assets/MARS_API_KEY'
 import MarsPhotoItem from './MarsPhotoItem.vue'
-import MarsDateItem from './MarsDateItem.vue'
+// import MarsDateItem from './MarsDateItem.vue'
 import { eventBus } from '../main.js';
+import DateForm from './DateForm.vue';
 
 
 export default {
   components: { 
     'mars-photo-item': MarsPhotoItem, 
-    'mars-date-item': MarsDateItem
+    // 'mars-date-item': MarsDateItem
+    "date-item": DateForm
   
   },
-
+  
   name: 'mars', 
+
   data() {
     return {
-    marsPhotos: [],
+      marsPhotos: [],
     }
   },
 
-  mounted () {
+  mounted() {
     this.getPhotos()
-    
-    eventBus.$on('selected-date', (payload) => this.marsPhotos = payload)
-
+    // eventBus.$on('selected-date', (payload) => this.marsPhotos = payload)
+    eventBus.$on('date-selected', (payload) => this.marsPhotos = payload)
   },
 
   methods: {
@@ -56,8 +59,8 @@ export default {
       .then (data => this.marsPhotos = data.latest_photos)
     },
   }
-
 }
+
 </script>
 
 <style>
