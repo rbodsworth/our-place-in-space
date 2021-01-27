@@ -22,11 +22,8 @@ export default {
     data() {
         return {
             epicImage: null,
-            // testUrl: "https://api.nasa.gov/EPIC/archive/natural/2019/05/30/jpg/epic_1b_20190530011359.jpg?api_key=",
             
-            // 1st api end point
             allEpicDatesEndPoint: "https://epic.gsfc.nasa.gov/api/natural/all",
-            // data returned from first api end point
             allEpicDates: [],
             
             selectedDate: null,
@@ -41,10 +38,7 @@ export default {
             activeDay: "",
 
             epicArchiveEndPoint: "",
-            
-            // epicMostRecentEndPoint: "https://api.nasa.gov/EPIC/api/natural/?api_key=", //returns obj with image names
-
-            // relevantInfo: null,
+        
             relevantImageNames: null,
             relevantData: null,
             relevantEndPoint: null,
@@ -107,10 +101,8 @@ export default {
         },
 
         getTheDate: function() {
-            // if(this.activeDate) {
                 this.activeDate = data[0].date
                 console.log(this.activeDate);
-            // }
         },
 
         makeImageUrls: function() {
@@ -140,27 +132,7 @@ export default {
         .then(
             fetch(this.relevantEndPoint)
             .then(res => res.json())
-            .then(data => this.relevantData = data)
-            // .then(this.getTheDate())
-            // .then(this.imageNames = this.mapImageNames(data))
-                    ),
-
-            // .then(
-                // function(data) {
-                //     this.activeDate = data[0].date;
-                //     this.imageNames = this.mapImageNames(data)
-                // })
-                // (data) => this.activeDate = data[0].date 
-                        //   this.imageNames = this.mapImageNames(data) ),
-                // (data => this.imageNames = this.mapImageNames(data))
-            // );
-
-
-            // .then(data => this.activeDate = this.getTheDate(data))
-            // );
-        
-        // build url with image names
-        // fetch with those image
+            .then(data => this.relevantData = data)),
 
         eventBus.$on("date-selected", (date) => {
             this.selectedDate = date;
