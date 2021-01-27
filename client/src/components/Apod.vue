@@ -2,15 +2,14 @@
   <div id='apod'>
       <h2 class="subtitle">When we look to the stars we see ancient history</h2>
       <div class="title-block">
-        <h3 v-if="picOfTheDay"> {{picOfTheDay.title}} </h3>
-        <h4 class="date-right" v-if="picOfTheDay"> {{picOfTheDay.date}}</h4>
+        <h3 v-if="apodData"> {{apodData.title}} </h3>
+        <h4 class="date-right" v-if="apodData"> {{apodData.date}}</h4>
       </div>
       <div id="caption-picture">
-        <img class="apod-image" v-if="picOfTheDay" :src="picOfTheDay.url">
-        <p v-if='picOfTheDay.copyright'> Photography Copyright: {{picOfTheDay.copyright}} </p>
-        <p v-if="picOfTheDay"> {{picOfTheDay.explanation}}</p>
+        <img class="apod-image" v-if="apodData" :src="apodData.url">
+        <p v-if='apodData.copyright'> Photography Copyright: {{apodData.copyright}} </p>
+        <p v-if="apodData"> {{apodData.explanation}}</p>
       </div>
-    <!-- <date-form class="date-input"></date-form> -->
   </div>
 </template>
 
@@ -26,28 +25,38 @@ export default {
     },
     data () {
       return {
-        // picOfTheDay: undefined
-        datePicked: undefined
+        datePicked: undefined,
+        archiveUrl: undefined,
+        apodData: undefined
       }
     },
-
-    mounted () {
-      this.getApodToday()
-      // eventBus.$on("date-picked", (payload) => this.picOfTheDay = payload)
-      eventBus.$on("date-picked", (date => this.datePicked = date))
-    },
-    
+ 
     methods: {
         getApodToday: function(){
             fetch(`https://api.nasa.gov/planetary/apod?api_key=${APIkey}`)
             .then(res => res.json())
-            .then(data => this.picOfTheDay = data)
+            .then(data => this.apodData = data)
         },
 
-        getApodByDate: function(){
+        createArchiveUrl: function(date) {
+          return this.archiveUrl = `https://api.nasa.gov/planetary/apod?api_key=${APIkey}&date=${this.datePicked}`;
+        },
+    },
 
-        }
-        }
+     mounted() {
+      this.getApodToday()
+
+      eventBus.$on("date-picked", (date) => {
+        this.datePicked = date;
+        console.log('offbusdate',this.datePicked);
+
+        fetch(this.createArchiveUrl())
+        .then(res => res.json())
+        .then(data => this.apodData = data);
+      }) 
+    },
+
+
 }
     
 
@@ -70,21 +79,5 @@ export default {
   font-style: italic;
   text-transform: initial;
 }
-
-/* #caption-picture {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-} */
-
-
-
-/* .apod-image { */
-  /* width: 50%; */
-  /* height: 50%; */
-  /* max-width: 1000px; */
-  /* max-height: 1000px; */
-/* } */
 
 </style>

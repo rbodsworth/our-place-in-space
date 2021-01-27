@@ -3,8 +3,8 @@
         <h2 class="subtitle">What does our future hold?</h2>
         <h2>EPIC</h2><br>
         <epic-dates-dropdown class="date-right" :dates="allEpicDates"/>
-        <img v-if="archiveImageUrls" :src="archiveImageUrls[0]"/>
-        <img v-else :src="liveEndPoint" />
+        <img class="epic-image" v-if="archiveImageUrls" :src="archiveImageUrls[0]"/>
+        <img class="epic-image" v-else :src="liveEndPoint" />
     </div>
 </template>
 
@@ -157,6 +157,10 @@ export default {
 .epic-wrapper {
     display: flex;
     flex-direction: column;
+}
+
+.epic-image {
+    mix-blend-mode: screen;
 }
 
 </style>
