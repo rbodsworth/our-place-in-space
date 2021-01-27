@@ -2,13 +2,14 @@
 
     <div id='date'>
         <form v-on:submit.prevent="handleDateSubmit">
-            <label for="image_date">Select a date</label>
+            <label for="image_date"></label>
             <input type="date" id="image_date" name="image_date" v-model="selected_date">
             <input type="submit">
         </form> 
 
-        <img v-if="datePic" :src="datePic[1].img_src" width="300">
-        <h3 v-if="datePic">Earth Date: {{datePic[1].earth_date}}</h3> 
+        <!-- <img v-if="datePic" :src="datePic[1].img_src" width="500"> -->
+        
+        <!-- <h3 v-if="datePic">Earth Date: {{datePic[1].earth_date}}</h3>  -->
             </div>
             
             
@@ -34,12 +35,19 @@ export default {
     
 
     methods: {
-      handleDateSubmit: function(){
+      handleDateSubmit(){
       fetch(`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=${this.selected_date}&api_key=${APIkey}`)
       .then( res => res.json())
-      .then(data => this.datePic = data.photos)
+      .then(data => {
+          this.datePic = data.photos
+          eventBus.$emit("date-selected", this.datePic)  
+      }
+          
+          )
+      
+      
 
-    eventBus.$emit("selected-date", this.datePic)
+    // eventBus.$emit("selected-date", this.datePic)
 
 
 

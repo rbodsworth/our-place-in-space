@@ -44,6 +44,9 @@ export default {
             .then(data => this.picOfTheDay = data)
             
             },
+      
+      
+      
     }
 }
         
