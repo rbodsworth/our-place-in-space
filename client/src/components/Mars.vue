@@ -1,9 +1,8 @@
 <template>
 <div id="marsmain">
+
   <h2 class="subtitle">Our closest neighbour is a frozen desert</h2>
   <h3>Today's photo from Mars</h3>
-  <!-- <mars-date-item class="date-input"></mars-date-item> -->
-  <!-- <date-item class="date-input"/> -->
 
   <img class="mars-image" v-if="marsPhotos" :src="marsPhotos[0].img_src">
 
@@ -23,34 +22,19 @@
 
 <script>
 
-import { APIkey } from '@/assets/MARS_API_KEY'
-import MarsPhotoItem from './MarsPhotoItem.vue'
-// import MarsDateItem from './MarsDateItem.vue'
+import { APIkey } from '@/assets/MARS_API_KEY';
+import MarsPhotoItem from './MarsPhotoItem.vue';
 import { eventBus } from '../main.js';
-import DateForm from './DateForm.vue';
 
 
 export default {
-  components: { 
-    'mars-photo-item': MarsPhotoItem, 
-    // 'mars-date-item': MarsDateItem
-    "date-item": DateForm
-  
-  },
-  
   name: 'mars', 
 
   data() {
-    return {
-      marsPhotos: [],
-    }
+    return { marsPhotos: [] }
   },
 
-  mounted() {
-    this.getPhotos()
-    // eventBus.$on('selected-date', (payload) => this.marsPhotos = payload)
-    eventBus.$on('date-selected', (payload) => this.marsPhotos = payload)
-  },
+ components: { 'mars-photo-item': MarsPhotoItem },
 
   methods: {
     getPhotos: function(){
@@ -58,7 +42,12 @@ export default {
       .then( res => res.json())
       .then (data => this.marsPhotos = data.latest_photos)
     },
-  }
+  },
+
+  mounted () {
+  this.getPhotos()
+  eventBus.$on('date-selected', (payload) => this.marsPhotos = payload)
+  },
 }
 
 </script>
@@ -81,13 +70,5 @@ export default {
   font-family: Helvetica, Arial, sans-serif;
   font-size: 12px;
 }
- /* .mars-image {
-  width: 50%;
-  height: 50%;
-  max-width: 1000px;
-  max-height: 1000px;
-} */
-
-
 
 </style>
