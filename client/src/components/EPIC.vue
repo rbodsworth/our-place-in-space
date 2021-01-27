@@ -55,6 +55,8 @@ export default {
             mostRecentData: null
         }
     },
+
+
     methods: {
 
         addApiKeyToEndPoint: function(endPoint) {
@@ -71,7 +73,16 @@ export default {
             this.selectedYear = parsed[0]
             this.selectedMonth = parsed[1]
             this.selectedDay = parsed[2]
-            console.log(this.selectedYear, this.selectedMonth, this.selectedDay)
+            console.log(this.selectedYear, 
+                        this.selectedMonth, 
+                        this.selectedDay)
+        },
+       
+       parseActiveDate: function() {
+            let parsed = this.activeDate.split('-');
+            this.activeYear = parsed[0]
+            this.activeMonth = parsed[1]
+            this.activeDay = parsed[2]
         },
 
         chooseRelevantEndPoint: function(selectedDate) {
@@ -83,9 +94,6 @@ export default {
             console.log(this.relevantEndPoint)
         },
 
-        // makeEpicMostRecentEndPoint: function() {
-        //     this.mostRecent = `https://api.nasa.gov/EPIC/api/natural/?api_key=${key.nasa}`
-        // },
 
         makeEpicArchiveEndPoint: function() {
             return this.epicArchiveEndPoint  = `https://api.nasa.gov/EPIC/api/natural/date/${this.selectedDate}?api_key=${key.nasa}`;
@@ -118,16 +126,16 @@ export default {
             .then(data => this.imageNames = this.mapImageNames(data))
             );
         
-        // strip image name from relevant data
         // build url with image names
         // fetch with those image
 
 
 
-        eventBus.$on("date-selected", (selectedDate) => {
-            this.selectedDate = selectedDate;
-            console.log(this.selectedDate);
+        eventBus.$on("date-selected", (date) => {
+            this.selectedDate = date;
+            this.activeDate = date;
             this.parseDate();
+            this.parseActiveDate();
 
             fetch(this.makeEpicArchiveEndPoint())
             .then(res => res.json())
