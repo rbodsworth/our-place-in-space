@@ -3,13 +3,12 @@
     <date-form></date-form>
       <h3> Date: {{picOfTheDay.date}}</h3>
       
-      <h2>Picture of the day</h2>
       <h3> {{picOfTheDay.title}} </h3>
-      <img :src="picOfTheDay.url" width='500'>
-      <p v-if='picOfTheDay.copyright'> Copyright: {{picOfTheDay.copyright}} </p>
-
-      <h2>Explanation</h2>
-      <p class="caption"> {{picOfTheDay.explanation}}</p>
+      <div id="caption-picture">
+        <img :src="picOfTheDay.url">
+        <p v-if='picOfTheDay.copyright'> Copyright: {{picOfTheDay.copyright}} </p>
+        <p class="caption"> {{picOfTheDay.explanation}}</p>
+      </div>
 
   </div>
 </template>
@@ -62,6 +61,26 @@ export default {
 <style>
 .caption{
   text-align: justify;
+  padding: 50px;
+  line-height: 2;
+  font-size:1vw;
 }
+
+#caption-picture {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+img {
+  width: 50%;
+  height: 50%;
+}
+
+
+
+
+
 
 </style>

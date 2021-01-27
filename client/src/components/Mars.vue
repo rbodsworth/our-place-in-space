@@ -1,8 +1,15 @@
 <template>
-<div id = "mars">
+<div id = "marsmain">
   <h3>Image data gathered by NASA's Curiosity, Opportunity, and Spirit rovers on Mars</h3>
   <mars-date-item ></mars-date-item>
-  <img :src="marsPhotos[0].img_src" width="500">
+
+  <img :src="marsPhotos[0].img_src" width="800">
+  <div id="marscap">
+  
+  <p class="marscaption">Earth date: {{marsPhotos[0].earth_date}}
+  Mars sol: {{marsPhotos[0].sol}}
+  Rover name: {{marsPhotos[0].rover.name}}</p>
+  </div>
 
 </div>
 
@@ -55,5 +62,6 @@ export default {
   text-align: center;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 } */
+
 
 </style>
