@@ -1,15 +1,11 @@
 <template>
-<div id = "main">
-<div id="heads">
-    <h1>Mars Rover Photos</h1>
-    <h3>Image data gathered by NASA's Curiosity, Opportunity, and Spirit rovers on Mars</h3>
-    <p>Search images by a specific date</p>
-
+<div id = "mars">
+  <h3>Image data gathered by NASA's Curiosity, Opportunity, and Spirit rovers on Mars</h3>
   <mars-date-item ></mars-date-item>
   <img :src="marsPhotos[0].img_src" width="500">
 
 </div>
-</div>
+
 
 </template>
 
@@ -55,9 +51,9 @@ export default {
 
 <style>
 
-#heads {
+/* #heads {
   text-align: center;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-}
+} */
 
 </style>

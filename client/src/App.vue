@@ -1,7 +1,9 @@
 <template>
   <div id=main>
+    <h2>Astronomy Picture Of the Day</h2>
     <apod></apod>
     <hr>
+    <h2>Mars Rover Photos</h2>
     <mars></mars>
   </div>
 </template>
@@ -24,9 +26,39 @@ export default {
 </script>
 
 <style>
-#main 
-  { background-image: linear-gradient(to bottom, #002857, #1d1d1d 57%, #050505);
 
+
+.date {
+  margin: 20px;
+  
+}
+
+/* .submit {
+  font-family: Helvetica;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 0.58px;
+  color: #FFFFFF;
+  background-color: #006DFF;
+  border-radius: 26px;
+  padding: 10px 10px;
+  width: 115px;
+  height: 39px;
+} */
+
+/* .submit {
+
+} */
+
+
+
+#main {
+  background-color: darkblue;
+  color: white;
+  text-align: center;
+  padding: 50px;
 }
 
 </style>

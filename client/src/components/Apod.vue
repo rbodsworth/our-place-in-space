@@ -50,13 +50,8 @@ export default {
 
 
 </script>
-</script>
+
 
 <style>
-
-
-#apod {
-  text-align: center;
-}
 
 </style>
