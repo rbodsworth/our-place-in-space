@@ -1,5 +1,6 @@
 <template>
   <div id='apod'>
+      <h2 class="subtitle">When we look to the stars we see ancient history</h2>
       <div class="title-block">
         <h3 v-if="picOfTheDay"> {{picOfTheDay.title}} </h3>
         <h4 class="date-right" v-if="picOfTheDay"> {{picOfTheDay.date}}</h4>
@@ -60,8 +61,11 @@ export default {
   flex-direction: column;
 }
 
-.title-block {
-  display: flex;
+.subtitle {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-weight: 100;
+  font-style: italic;
+  text-transform: initial;
 }
 
 /* #caption-picture {
@@ -71,10 +75,7 @@ export default {
   align-items: center;
 } */
 
-.date-right {
-  margin-left: auto;
-  font-weight: 100;
-}
+
 
 /* .apod-image { */
   /* width: 50%; */

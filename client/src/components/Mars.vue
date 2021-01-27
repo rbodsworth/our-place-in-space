@@ -1,6 +1,5 @@
 <template>
 <div id = "marsmain">
-
   <h3>Image data gathered by NASA's Curiosity, Opportunity, and Spirit rovers on Mars</h3>
   <mars-date-item ></mars-date-item>
 

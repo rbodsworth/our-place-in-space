@@ -35,12 +35,13 @@ export default {
 h1, h2, h3, h4, h5, h6 {
     font-family: Helvetica, Arial, sans-serif ;
     text-transform: uppercase;
+    text-align: left;
 }
 
 p {
   font-family: Georgia, 'Times New Roman', Times, serif;
-  font-size: 22px;
-  line-height: 1.5;
+  font-size: 20px;
+  line-height: 1.36;
   text-align: left;
 }
 
@@ -74,4 +75,21 @@ body { margin: 0px }
   /* align-self: left; */
   margin-right: auto;
 }
+
+.title-block {
+  display: flex;
+}
+
+.date-right {
+  margin-left: auto;
+  font-weight: 100;
+}
+
+.subtitle {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-weight: 100;
+  font-style: italic;
+  text-transform: initial;
+}
+
 </style>
