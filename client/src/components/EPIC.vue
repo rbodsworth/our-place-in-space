@@ -107,22 +107,19 @@ export default {
         },
 
         getTheDate: function() {
-            if(this.activeDate) {
+            // if(this.activeDate) {
                 this.activeDate = data[0].date
                 console.log(this.activeDate);
-            }
+            // }
         },
-
 
         makeImageUrls: function() {
             return this.imageNames.map( image => `https://api.nasa.gov/EPIC/archive/natural/${this.selectedYear}/${this.selectedMonth}/${this.selectedDay}/jpg/${image}.jpg?api_key=${key.nasa}` );
         },
 
-
         makeEpicArchiveEndPoint: function() {
             return this.epicArchiveEndPoint  = `https://api.nasa.gov/EPIC/api/natural/date/${this.selectedDate}?api_key=${key.nasa}`;
         },
-
 
         getArchiveImageNames: function(data) {
             return data.map( obj => obj.image );
@@ -144,14 +141,26 @@ export default {
             fetch(this.relevantEndPoint)
             .then(res => res.json())
             .then(data => this.relevantData = data)
-            .then(data => this.imageNames = this.mapImageNames(data))
-            .then(this.getTheDate())
-            );
+            // .then(this.getTheDate())
+            // .then(this.imageNames = this.mapImageNames(data))
+                    ),
+
+            // .then(
+                // function(data) {
+                //     this.activeDate = data[0].date;
+                //     this.imageNames = this.mapImageNames(data)
+                // })
+                // (data) => this.activeDate = data[0].date 
+                        //   this.imageNames = this.mapImageNames(data) ),
+                // (data => this.imageNames = this.mapImageNames(data))
+            // );
+
+
+            // .then(data => this.activeDate = this.getTheDate(data))
+            // );
         
         // build url with image names
         // fetch with those image
-
-
 
         eventBus.$on("date-selected", (date) => {
             this.selectedDate = date;
