@@ -1,10 +1,10 @@
 <template>
-    <div class="epic-wrapper">
-        <h2 class="subtitle">What does our future hold?</h2>
-        <h2>EPIC</h2><br>
-        <epic-dates-dropdown class="date-right" :dates="allEpicDates"/>
-        <img v-if="archiveImageUrls" :src="archiveImageUrls[0]"/>
-        <img v-else :src="liveEndPoint" />
+    <div id="epic" class="epic-wrapper">
+        <h2 class="subtitle">What does you imagine for our future?</h2>
+        <!-- <h2>EPIC</h2><br> -->
+        <!-- <epic-dates-dropdown class="date-right" :dates="allEpicDates"/> -->
+        <img class="epic-image" v-if="archiveImageUrls" :src="archiveImageUrls[0]"/>
+        <img class="epic-image" v-else :src="liveEndPoint" />
     </div>
 </template>
 
@@ -134,7 +134,7 @@ export default {
             .then(res => res.json())
             .then(data => this.relevantData = data)),
 
-        eventBus.$on("epic-date-selected", (date) => {
+        eventBus.$on("date-picked", (date) => {
             this.selectedDate = date;
             this.activeDate = date;
             this.parseDate();
@@ -147,6 +147,7 @@ export default {
             .then(data => this.archiveImageUrls = this.makeEpicArchiveImageUrls())
 
             .then(this.chooseRelevantEndPoint(this.selectedDate));
+
         });
     }
 
@@ -157,6 +158,12 @@ export default {
 .epic-wrapper {
     display: flex;
     flex-direction: column;
+    margin-top: 45px;
+    margin-bottom: 100px;
+}
+
+.epic-image {
+    mix-blend-mode: screen;
 }
 
 </style>
