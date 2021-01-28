@@ -5,7 +5,7 @@
     <apod></apod>
     <mars></mars>
     <epic-image/>
-    <date-form clas='date-picker'/>
+    <date-form />
   </div>
 </template>
 
@@ -93,11 +93,11 @@ body { margin: 0px }
   font-weight: 100;
   font-style: italic;
   text-transform: initial;
+  font-size: 30px;
+  margin-bottom: 0px;
 }
 
-.date-picker {
-  position: fixed;
-  bottom: 0;
-}
+
+
 
 </style>

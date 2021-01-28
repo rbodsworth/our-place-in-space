@@ -1,7 +1,7 @@
 <template>
-    <div class="epic-wrapper">
-        <h2 class="subtitle">What does our future hold?</h2>
-        <h2>EPIC</h2><br>
+    <div id="epic" class="epic-wrapper">
+        <h2 class="subtitle">What does you imagine for our future?</h2>
+        <!-- <h2>EPIC</h2><br> -->
         <!-- <epic-dates-dropdown class="date-right" :dates="allEpicDates"/> -->
         <img class="epic-image" v-if="archiveImageUrls" :src="archiveImageUrls[0]"/>
         <img class="epic-image" v-else :src="liveEndPoint" />
@@ -158,6 +158,8 @@ export default {
 .epic-wrapper {
     display: flex;
     flex-direction: column;
+    margin-top: 45px;
+    margin-bottom: 100px;
 }
 
 .epic-image {

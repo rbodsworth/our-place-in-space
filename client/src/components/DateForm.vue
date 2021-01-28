@@ -1,10 +1,17 @@
 <template>
-    <div>
+    <div class="date-picker">
+        <!-- <nav>
+            <ul>
+                <li class="nav-el"><a  class="nav-link" href="#apod">APOD</a></li>
+                <li class="nav-el"><a class="nav-link" href="#marsmain">Curiosty</a></li>
+                <li class="nav-el"><a class="nav-link" href ="#epic">Epic</a></li>
+            </ul>
+        </nav> -->
         <form v-on:submit.prevent="handleDatePic">
-            <label for="image_date">Explore the universe by Gregorian date</label>
+            <!-- <label for="image_date">Enter a Gregorian date to explore space time</label><br> -->
             <!-- TODO change date picker max value to receive today's date from browser window -->
-            <input type="date" id="image_date" name="image_date" min="2015-06-13" max="2021-01-28" v-model="datePic"> 
-            <input class='submit submit-button' type="submit">
+            <input class="date-input" type="date" id="image_date" name="image_date" min="2015-06-13" max="2021-01-28" v-model="datePic"> 
+            <input class='submit submit-button' type="submit" value="Explore">
         </form> 
     </div>
 </template>
@@ -81,16 +88,62 @@ button,
 }
 
 
-.submit-button {
-    border-radius: 999px;
-  padding: 09px 25px 08px 25px;
-  letter-spacing: 1px;
-  background-color: #006dff;
-  color: #ffffff;
-  border-style: none;
+form {
+    position: relative;
+    width: 100%;
+}
+
+.date-picker {
+  width: 100%;
+  height: 70px;
+  margin-left: -15px;
+  background-color: #222222;
+  position: fixed;
+  bottom: 0;
+  /* padding: 15px; */
 }
 
 
+.date-input {
+    position: absolute;
+    left: 15px;
+    top: 15px;
+    padding: 06px 16px 02px 25px;
+    /* bottom: 15px; */
+}
 
+.submit-button {
+    border-radius: 999px;
+    padding: 11px 25px 09px 25px;
+    letter-spacing: 1px;
+    background-color: #006dff;
+    color: #ffffff;
+    border-style: none;
+    margin-left: auto;
+    position: absolute;
+    right: 15px;
+    top: 15px;
+  /* bottom: 15px */
+  /* height: 70px */
+}
+
+ul{
+    display: flex;
+    direction: row;
+    justify-content: space-between;
+    margin: 0 15px;
+}
+
+
+li {
+    list-style: none;
+}
+
+.nav-link{
+    font-family: Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+    color: white !important;
+    text-decoration: none;
+}
 
 </style>
