@@ -2,7 +2,7 @@
     <div class="epic-wrapper">
         <h2 class="subtitle">What does our future hold?</h2>
         <h2>EPIC</h2><br>
-        <epic-dates-dropdown class="date-right" :dates="allEpicDates"/>
+        <!-- <epic-dates-dropdown class="date-right" :dates="allEpicDates"/> -->
         <img class="epic-image" v-if="archiveImageUrls" :src="archiveImageUrls[0]"/>
         <img class="epic-image" v-else :src="liveEndPoint" />
     </div>
@@ -134,7 +134,7 @@ export default {
             .then(res => res.json())
             .then(data => this.relevantData = data)),
 
-        eventBus.$on("epic-date-selected", (date) => {
+        eventBus.$on("date-picked", (date) => {
             this.selectedDate = date;
             this.activeDate = date;
             this.parseDate();
@@ -147,6 +147,22 @@ export default {
             .then(data => this.archiveImageUrls = this.makeEpicArchiveImageUrls())
 
             .then(this.chooseRelevantEndPoint(this.selectedDate));
+
+
+            
+        // eventBus.$on("epic-date-selected", (date) => {
+        //     this.selectedDate = date;
+        //     this.activeDate = date;
+        //     this.parseDate();
+        //     this.parseActiveDate();
+
+        //     fetch(this.makeEpicArchiveEndPoint())
+        //     .then(res => res.json())
+        //     .then(data => this.archiveEndPointData = data)
+        //     .then(data => this.archiveImageNames = this.mapImageNames(data))
+        //     .then(data => this.archiveImageUrls = this.makeEpicArchiveImageUrls())
+
+        //     .then(this.chooseRelevantEndPoint(this.selectedDate));
         });
     }
 
