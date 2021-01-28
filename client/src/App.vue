@@ -3,7 +3,6 @@
   <div id=main>
     <h2>Astronomy Picture Of the Day</h2>
     <apod></apod>
-    <hr>
     <h2>Mars Rover Photos</h2>
     <mars></mars>
     <epic-image/>
