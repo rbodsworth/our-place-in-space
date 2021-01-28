@@ -4,7 +4,8 @@
   <h2 class="subtitle">Our closest neighbour is a frozen desert</h2>
   <h3>Today's photo from Mars</h3>
 
-  <img class="mars-image" v-if="marsPhotos" :src="marsPhotos[0].img_src">
+  <img class="mars-image" v-if="marsData" :src="marsData.photos[0].img_src">
+  <img class="mars-image" v-else :src="marsPhotos[0].img_src">
 
   <div id="marscap">
     <span class="marscaption">Date: <strong>{{marsPhotos[0].earth_date}}</strong></span>
@@ -19,11 +20,9 @@
 
 </template>
 
-
 <script>
 
 import { APIkey } from '@/assets/MARS_API_KEY';
-import MarsPhotoItem from './MarsPhotoItem.vue';
 import { eventBus } from '../main.js';
 
 
@@ -31,10 +30,14 @@ export default {
   name: 'mars', 
 
   data() {
-    return { marsPhotos: [] }
+    return { 
+      marsPhotos: [],
+      datePicked: undefined,
+      marsData: undefined,
+      archiveMarsPhotos: []
+      }
   },
 
- components: { 'mars-photo-item': MarsPhotoItem },
 
   methods: {
     getPhotos: function(){
@@ -42,13 +45,50 @@ export default {
       .then( res => res.json())
       .then (data => this.marsPhotos = data.latest_photos)
     },
+
+    createArchiveUrl: function() {
+        return this.archiveUrl = `https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=${this.datePicked}&api_key=${APIkey}`;
+      },
+
+    mapImageUrls: function(data){
+      this.archiveMarsPhotos.push('banana')
+      // return data.map(obj => obj.photos.image_src)
+      console.log('mars dat', data)
+    }
+
   },
 
   mounted () {
   this.getPhotos()
-  eventBus.$on('date-selected', (payload) => this.marsPhotos = payload)
+
+  eventBus.$on("date-picked", (date) => {
+    this.datePicked = date;
+    fetch(this.createArchiveUrl())
+    .then(res => res.json())
+    .then(data => this.marsData = data)
+    
+    
+    mapImageUrls(data)
+    }) 
   },
 }
+
+    // .then(data => this.archiveMarsPhotos = this.mapImageUrls(data))
+
+
+
+
+//  methods: {
+//       handleDateSubmit(){
+//       fetch(`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=${this.selected_date}&api_key=${APIkey}`)
+//       .then( res => res.json())
+//       .then(data => {
+//           this.datePic = data.photos
+//           eventBus.$emit("selected-date", this.datePic)  
+
+
+
+
 
 </script>
 

@@ -3,11 +3,9 @@
   <div id="main">
     <h1 class="title">Our Place in Space</h1>
     <apod></apod>
-    <hr>
-    <h2>Mars Rover Photos</h2>
     <mars></mars>
     <epic-image/>
-    <date-form/>
+    <date-form clas='date-picker'/>
   </div>
 </template>
 
@@ -93,6 +91,11 @@ body { margin: 0px }
   font-weight: 100;
   font-style: italic;
   text-transform: initial;
+}
+
+.date-picker {
+  position: fixed;
+  bottom: 0;
 }
 
 </style>

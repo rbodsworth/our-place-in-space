@@ -38,7 +38,7 @@ export default {
             .then(data => this.apodData = data)
         },
 
-        createArchiveUrl: function(date) {
+        createArchiveUrl: function() {
           return this.archiveUrl = `https://api.nasa.gov/planetary/apod?api_key=${APIkey}&date=${this.datePicked}`;
         },
     },
@@ -48,7 +48,6 @@ export default {
 
       eventBus.$on("date-picked", (date) => {
         this.datePicked = date;
-        console.log('offbusdate',this.datePicked);
 
         fetch(this.createArchiveUrl())
         .then(res => res.json())
