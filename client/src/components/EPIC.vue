@@ -148,21 +148,6 @@ export default {
 
             .then(this.chooseRelevantEndPoint(this.selectedDate));
 
-
-            
-        // eventBus.$on("epic-date-selected", (date) => {
-        //     this.selectedDate = date;
-        //     this.activeDate = date;
-        //     this.parseDate();
-        //     this.parseActiveDate();
-
-        //     fetch(this.makeEpicArchiveEndPoint())
-        //     .then(res => res.json())
-        //     .then(data => this.archiveEndPointData = data)
-        //     .then(data => this.archiveImageNames = this.mapImageNames(data))
-        //     .then(data => this.archiveImageUrls = this.makeEpicArchiveImageUrls())
-
-        //     .then(this.chooseRelevantEndPoint(this.selectedDate));
         });
     }
 
