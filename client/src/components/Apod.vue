@@ -1,12 +1,13 @@
 <template>
   <div id='apod'>
     <date-form></date-form>
-      <h3 v-if="picOfTheDay"> Selected date: {{picOfTheDay.date}}</h3>
+      
       
       <div id="caption-picture">
         <img class="apod-image" v-if="picOfTheDay" :src="picOfTheDay.url">
         <section>
         <h2 v-if="picOfTheDay"> {{picOfTheDay.title}} </h2>
+        <h3 v-if="picOfTheDay"> Selected date: {{picOfTheDay.date}}</h3>
         <p class="component-text" v-if="picOfTheDay"> {{picOfTheDay.explanation}}</p>
         <p v-if='picOfTheDay.copyright'> Photography Copyright: {{picOfTheDay.copyright}} </p>
         </section>
