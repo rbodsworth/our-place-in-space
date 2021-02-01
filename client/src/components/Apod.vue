@@ -3,11 +3,11 @@
     <date-form></date-form>
       <h3 v-if="picOfTheDay"> Selected date: {{picOfTheDay.date}}</h3>
       
-      <h3 v-if="picOfTheDay"> {{picOfTheDay.title}} </h3>
       <div id="caption-picture">
         <img class="apod-image" v-if="picOfTheDay" :src="picOfTheDay.url">
         <section>
-        <p class="caption" v-if="picOfTheDay"> {{picOfTheDay.explanation}}</p>
+        <h2 v-if="picOfTheDay"> {{picOfTheDay.title}} </h2>
+        <p class="component-text" v-if="picOfTheDay"> {{picOfTheDay.explanation}}</p>
         <p v-if='picOfTheDay.copyright'> Photography Copyright: {{picOfTheDay.copyright}} </p>
         </section>
       </div>
@@ -61,12 +61,6 @@ export default {
 
 
 <style>
-.caption{
-  text-align: justify;
-  padding: 50px;
-  line-height: 2;
-  font-size:1vw;
-}
 
 #caption-picture {
   display: flex;

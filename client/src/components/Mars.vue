@@ -4,16 +4,15 @@
   <mars-date-item ></mars-date-item>
 
 <div id ="caption-picture">
-  <img class="mars-image" v-if="marsPhotos" :src="marsPhotos[0].img_src">
-  
   <div id="marscap">
-  <p class="marscaption">Earth date: {{marsPhotos[0].earth_date}}</p>
-  <p>Mars sol: {{marsPhotos[0].sol}}</p>
-  <p>Rover name: {{marsPhotos[0].rover.name}}</p>
-  <p>Landing date: {{marsPhotos[0].rover.landing_date}}</p>
-  <p>Launch date: {{marsPhotos[0].rover.launch_date}}</p>
-  <p>Rover status: {{marsPhotos[0].rover.status}}</p>
+  <p class="component-text">Earth date: {{marsPhotos[0].earth_date}}</p>
+  <p class="component-text">Mars sol: {{marsPhotos[0].sol}}</p>
+  <p class="component-text">Rover name: {{marsPhotos[0].rover.name}}</p>
+  <p class="component-text">Landing date: {{marsPhotos[0].rover.landing_date}}</p>
+  <p class="component-text">Launch date: {{marsPhotos[0].rover.launch_date}}</p>
+  <p class="component-text">Rover status: {{marsPhotos[0].rover.status}}</p>
   </div>
+  <img class="mars-image" v-if="marsPhotos" :src="marsPhotos[0].img_src">
 </div>
 </div>
 
@@ -23,16 +22,13 @@
 <script>
 
 import { APIkey } from '@/assets/MARS_API_KEY'
-import MarsPhotoItem from './MarsPhotoItem.vue'
 import MarsDateItem from './MarsDateItem.vue'
 import { eventBus } from '../main.js';
 
 
 export default {
   components: { 
-    'mars-photo-item': MarsPhotoItem, 
     'mars-date-item': MarsDateItem
-  
   },
 
   name: 'mars', 
@@ -60,6 +56,7 @@ export default {
 }
 </script>
 
+
 <style>
 
  .mars-image {
@@ -68,7 +65,5 @@ export default {
   max-width: 1000px;
   max-height: 1000px;
 }
-
-
 
 </style>
