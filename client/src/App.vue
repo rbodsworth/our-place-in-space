@@ -34,13 +34,22 @@ h1 {
   font-size:6vw;
 }
 
+input, button {
+  font-family: 'Cardo', serif;
+  font-family: 'Righteous', cursive;
+  background-color: #010014;
+  border: 2px solid white;
+  border-radius: 5px;
+  color: white;
+}
+
 .date {
   margin: 20px;
 }
 
 #main {
   background-color: #010014;
-  background-image: url(assets/starrysky1.jpg);
+  /* background-image: url(assets/starrysky1.jpg); */
   color: white;
   text-align: center;
   padding: 50px;

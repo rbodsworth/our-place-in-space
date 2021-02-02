@@ -54,13 +54,6 @@ export default {
 </script>
 
 
-
-
-
-
-
-
-
 <style>
 
 #caption-picture {
